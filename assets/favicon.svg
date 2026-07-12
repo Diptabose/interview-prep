@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Interview Prep">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5c6bc0"/>
+      <stop offset="1" stop-color="#3949ab"/>
+    </linearGradient>
+  </defs>
+  <!-- App-icon tile -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#bg)"/>
+  <!-- Open book -->
+  <g fill="none" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <!-- spine -->
+    <path d="M32 20 V46" opacity="0.9"/>
+    <!-- left page -->
+    <path d="M32 20 C27 16 20 15 15 16 V43 C20 42 27 43 32 46 Z" fill="#ffffff" fill-opacity="0.14"/>
+    <!-- right page -->
+    <path d="M32 20 C37 16 44 15 49 16 V43 C44 42 37 43 32 46 Z" fill="#ffffff" fill-opacity="0.14"/>
+    <!-- text lines -->
+    <path d="M20 23 H27" stroke-width="2" opacity="0.85"/>
+    <path d="M20 29 H27" stroke-width="2" opacity="0.7"/>
+    <path d="M37 23 H44" stroke-width="2" opacity="0.85"/>
+    <path d="M37 29 H44" stroke-width="2" opacity="0.7"/>
+  </g>
+</svg>
