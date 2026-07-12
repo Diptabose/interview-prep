@@ -10,6 +10,8 @@ repo_name: Diptabose/interview-prep
 
 theme:
   name: material
+  favicon: assets/favicon.svg
+  logo: assets/favicon.svg
   palette:
     # Light mode
     - media: "(prefers-color-scheme: light)"
