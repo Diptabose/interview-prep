@@ -10,31 +10,31 @@
       
       
       
-        <link rel="canonical" href="https://diptabose.github.io/interview-prep/frontend/react/hooks/use-form-status/">
+        <link rel="canonical" href="https://diptabose.github.io/interview-prep/backend/messaging/nats/">
       
       
-        <link rel="prev" href="../use-effect-event/">
+        <link rel="prev" href="../../..">
       
       
-        <link rel="next" href="../use-optimistic/">
+        <link rel="next" href="core-nats/">
       
       
         
       
       
-      <link rel="icon" href="../../../../assets/favicon.svg">
+      <link rel="icon" href="../../../assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>useFormStatus - Interview Prep</title>
+        <title>NATS - Interview Prep</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,9 +53,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#useformstatus" class="md-skip">
+        <a href="#nats" class="md-skip">
           Skip to content
         </a>
       
@@ -96,9 +96,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="Interview Prep" class="md-header__button md-logo" aria-label="Interview Prep" data-md-component="logo">
+    <a href="../../.." title="Interview Prep" class="md-header__button md-logo" aria-label="Interview Prep" data-md-component="logo">
       
-  <img src="../../../../assets/favicon.svg" alt="logo">
+  <img src="../../../assets/favicon.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              useFormStatus
+              NATS
             
           </span>
         </div>
@@ -238,9 +238,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="Interview Prep" class="md-nav__button md-logo" aria-label="Interview Prep" data-md-component="logo">
+    <a href="../../.." title="Interview Prep" class="md-nav__button md-logo" aria-label="Interview Prep" data-md-component="logo">
       
-  <img src="../../../../assets/favicon.svg" alt="logo">
+  <img src="../../../assets/favicon.svg" alt="logo">
 
     </a>
     Interview Prep
@@ -267,7 +267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -291,8 +291,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -302,11 +304,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -327,7 +329,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -342,8 +344,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -353,11 +357,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
         
           
           <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
@@ -378,7 +382,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -393,6 +397,8 @@
                 
   
   
+    
+  
   
   
     
@@ -410,15 +416,15 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../backend/messaging/nats/" class="md-nav__link ">
+            <a href="./" class="md-nav__link md-nav__link--active">
               
   
   
@@ -436,13 +442,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+              <label class="md-nav__link md-nav__link--active" for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -462,7 +468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../backend/messaging/nats/core-nats/" class="md-nav__link">
+      <a href="core-nats/" class="md-nav__link">
         
   
   
@@ -490,7 +496,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../backend/messaging/nats/jetstream/" class="md-nav__link">
+      <a href="jetstream/" class="md-nav__link">
         
   
   
@@ -538,8 +544,6 @@
       
   
   
-    
-  
   
   
     
@@ -551,11 +555,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -576,7 +580,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -591,8 +595,6 @@
                 
   
   
-    
-  
   
   
     
@@ -604,11 +606,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
         
           
           <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
@@ -629,7 +631,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -644,8 +646,6 @@
                 
   
   
-    
-  
   
   
     
@@ -673,15 +673,15 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../../frontend/react/hooks/" class="md-nav__link ">
               
   
   
@@ -705,7 +705,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_1_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -725,7 +725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-action-state/" class="md-nav__link">
+      <a href="../../../frontend/react/hooks/use-action-state/" class="md-nav__link">
         
   
   
@@ -753,7 +753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-api/" class="md-nav__link">
+      <a href="../../../frontend/react/hooks/use-api/" class="md-nav__link">
         
   
   
@@ -781,7 +781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-deferred-value/" class="md-nav__link">
+      <a href="../../../frontend/react/hooks/use-deferred-value/" class="md-nav__link">
         
   
   
@@ -809,7 +809,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-effect-event/" class="md-nav__link">
+      <a href="../../../frontend/react/hooks/use-effect-event/" class="md-nav__link">
         
   
   
@@ -834,37 +834,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    useFormStatus
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../frontend/react/hooks/use-form-status/" class="md-nav__link">
         
   
   
@@ -880,81 +853,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gotchas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Gotchas
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#related" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Related
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -967,7 +865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-optimistic/" class="md-nav__link">
+      <a href="../../../frontend/react/hooks/use-optimistic/" class="md-nav__link">
         
   
   
@@ -995,7 +893,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-transition/" class="md-nav__link">
+      <a href="../../../frontend/react/hooks/use-transition/" class="md-nav__link">
         
   
   
@@ -1066,10 +964,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#what-nats-is" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        What NATS is
       
     </span>
   </a>
@@ -1077,10 +975,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
+  <a href="#the-three-core-messaging-patterns" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example
+        The three core messaging patterns
       
     </span>
   </a>
@@ -1088,10 +986,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#gotchas" class="md-nav__link">
+  <a href="#core-vs-jetstream-the-key-distinction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Gotchas
+        Core vs JetStream — the key distinction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delivery-guarantees-interview-staple" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delivery guarantees (interview staple)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-reach-for-nats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to reach for NATS
       
     </span>
   </a>
@@ -1140,89 +1060,101 @@
   
 
 
-<h1 id="useformstatus">useFormStatus<a class="headerlink" href="#useformstatus" title="Permanent link">&para;</a></h1>
+<h1 id="nats">NATS<a class="headerlink" href="#nats" title="Permanent link">&para;</a></h1>
 <blockquote>
-<p>Read the pending state and data of the <strong>parent <code>&lt;form&gt;</code></strong> from a child component — no prop-drilling. Ideal for shared submit buttons and form-aware inputs. Imported from <strong><code>react-dom</code></strong>. <em>(React 19.0.)</em></p>
+<p>A high-performance, open-source messaging system built around <strong>subjects</strong> (hierarchical topics). One lightweight server binary gives you pub/sub, request-reply, and load-balanced queues; <strong>JetStream</strong> adds persistence, replay, and stronger delivery guarantees on top.</p>
 </blockquote>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>A reusable <code>&lt;SubmitButton&gt;</code> needs to know whether the surrounding form is submitting — but it doesn't own the form's state. <code>useFormStatus</code> reads the status of the nearest ancestor <code>&lt;form&gt;</code> directly, like a mini context provided by the form itself.</p>
-<div class="language-jsx highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useFormStatus</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-dom&#39;</span><span class="p">;</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">pending</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="p">,</span><span class="w"> </span><span class="nx">action</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useFormStatus</span><span class="p">();</span>
-</span></code></pre></div>
+<h2 id="what-nats-is">What NATS is<a class="headerlink" href="#what-nats-is" title="Permanent link">&para;</a></h2>
+<p>NATS is a "connective technology" for services, edge, and IoT — think of it as a nervous system where any client can address any other by <strong>subject</strong> without knowing where it lives. Key traits:</p>
+<ul>
+<li><strong>Single small binary</strong> (<code>nats-server</code>), no external dependencies (unlike Kafka's ZooKeeper/KRaft or a JVM).</li>
+<li><strong>Subject-based addressing</strong> with wildcards — publishers and subscribers are fully decoupled; there's no fixed "topic" object to create for core messaging.</li>
+<li><strong>Two layers:</strong></li>
+<li><strong><a href="core-nats/">Core NATS</a></strong> — fire-and-forget, in-memory routing, <strong>at-most-once</strong> delivery. Extremely fast, no persistence.</li>
+<li><strong><a href="jetstream/">JetStream</a></strong> — a persistence layer (streams + consumers) giving <strong>at-least-once</strong> and <strong>exactly-once</strong> (within a dedup window) delivery, replay, and stream storage. Built into the same server since NATS Server 2.2.</li>
+</ul>
+<h2 id="the-three-core-messaging-patterns">The three core messaging patterns<a class="headerlink" href="#the-three-core-messaging-patterns" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Field</th>
-<th>Meaning</th>
+<th>Pattern</th>
+<th>Shape</th>
+<th>Use</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>pending</code></td>
-<td><code>true</code> while the parent form is submitting.</td>
+<td><strong>Publish-Subscribe</strong></td>
+<td>1 → N, every subscriber gets a copy</td>
+<td>events, broadcasts</td>
 </tr>
 <tr>
-<td><code>data</code></td>
-<td>The <code>FormData</code> being submitted (<code>null</code> if idle).</td>
+<td><strong>Request-Reply</strong></td>
+<td>1 ↔ 1, requester awaits a response on a temporary "inbox" subject</td>
+<td>RPC-style calls, service APIs</td>
 </tr>
 <tr>
-<td><code>method</code></td>
-<td><code>'get'</code> or <code>'post'</code>.</td>
-</tr>
-<tr>
-<td><code>action</code></td>
-<td>Reference to the form's <code>action</code> function (or <code>null</code>).</td>
+<td><strong>Queue groups</strong></td>
+<td>1 → 1-of-N, server picks one member of the group at random</td>
+<td>load-balancing / scaling a service horizontally</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Intuition:</strong> "<code>useContext</code> for the form I'm rendered inside — tell me if it's submitting, without the parent passing me a prop."</p>
-<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
-<div class="language-jsx highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useFormStatus</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-dom&#39;</span><span class="p">;</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1">// Reusable, form-agnostic submit button</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kd">function</span><span class="w"> </span><span class="nx">SubmitButton</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">pending</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useFormStatus</span><span class="p">();</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="w"> </span><span class="na">disabled</span><span class="o">=</span><span class="p">{</span><span class="nx">pending</span><span class="p">}&gt;</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">      </span><span class="p">{</span><span class="nx">pending</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;Submitting…&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Submit&#39;</span><span class="p">}</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="p">);</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="p">}</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="kd">function</span><span class="w"> </span><span class="nx">CheckoutForm</span><span class="p">({</span><span class="w"> </span><span class="nx">action</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="p">&lt;</span><span class="nt">form</span><span class="w"> </span><span class="na">action</span><span class="o">=</span><span class="p">{</span><span class="nx">action</span><span class="p">}&gt;</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">input</span><span class="w"> </span><span class="na">name</span><span class="o">=</span><span class="s">&quot;card&quot;</span><span class="w"> </span><span class="p">/&gt;</span>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">SubmitButton</span><span class="w"> </span><span class="p">/&gt;</span><span class="w">   </span><span class="p">{</span><span class="cm">/* reads the form&#39;s pending state itself */</span><span class="p">}</span>
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">  </span><span class="p">);</span>
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="p">}</span>
+<p>All three are <strong>core NATS</strong> and covered in detail in <a href="core-nats/">Core NATS</a>.</p>
+<h2 id="core-vs-jetstream-the-key-distinction">Core vs JetStream — the key distinction<a class="headerlink" href="#core-vs-jetstream-the-key-distinction" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>                Core NATS                         JetStream
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>   publisher ──▶ subject ──▶ subscriber   publisher ──▶ subject ──▶ [STREAM stores it]
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>   (if no one is listening,                                              │
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    the message is gone)                        durable CONSUMER ◀───────┘
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                                            (tracks acks, redelivers, replays)
 </span></code></pre></div>
-<h2 id="gotchas">Gotchas<a class="headerlink" href="#gotchas" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>The one rule that trips everyone up:</strong> <code>useFormStatus</code> only works from a component <strong>rendered inside</strong> the <code>&lt;form&gt;</code>. Calling it in the <em>same</em> component that renders <code>&lt;form&gt;</code> returns <code>pending: false</code> forever — it reads the <em>parent</em> form, and there isn't one at that level.</li>
+<li><strong>Core NATS</strong> routes messages <em>now</em>. If a subscriber isn't connected, it never sees the message — that's at-most-once.</li>
+<li><strong>JetStream</strong> <em>stores</em> messages in a <strong>stream</strong>, and <strong>consumers</strong> read from that store at their own pace, acking each one. Late subscribers can replay history.</li>
 </ul>
-<div class="language-jsx highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// ❌ Won&#39;t track — hook is in the component that renders the form</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">function</span><span class="w"> </span><span class="nx">Form</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">pending</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useFormStatus</span><span class="p">();</span><span class="w"> </span><span class="c1">// always idle</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">form</span><span class="w"> </span><span class="na">action</span><span class="o">=</span><span class="p">{</span><span class="nx">submit</span><span class="p">}&gt;&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">disabled</span><span class="o">=</span><span class="p">{</span><span class="nx">pending</span><span class="p">}/&gt;&lt;/</span><span class="nt">form</span><span class="p">&gt;;</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">}</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1">// ✅ Move it into a child</span>
-</span></code></pre></div>
+<h2 id="delivery-guarantees-interview-staple">Delivery guarantees (interview staple)<a class="headerlink" href="#delivery-guarantees-interview-staple" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Guarantee</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Core NATS</td>
+<td><strong>At-most-once</strong></td>
+<td>No storage, no acks — fast but lossy if no subscriber.</td>
+</tr>
+<tr>
+<td>JetStream</td>
+<td><strong>At-least-once</strong></td>
+<td>Stream stores the message; consumer redelivers until acked.</td>
+</tr>
+<tr>
+<td>JetStream</td>
+<td><strong>Exactly-once</strong> (within a window)</td>
+<td>Publisher dedup via <code>Nats-Msg-Id</code> + consumer <strong>double-ack</strong>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="when-to-reach-for-nats">When to reach for NATS<a class="headerlink" href="#when-to-reach-for-nats" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Import from <code>react-dom</code></strong>, not <code>react</code>.</li>
-<li>It only tracks submissions of the <strong>nearest</strong> ancestor form; it won't see sibling or unrelated forms.</li>
-<li>Complements <a href="../use-action-state/"><code>useActionState</code></a>: use <code>useActionState</code> at the form level for result/state, <code>useFormStatus</code> in deep children for pending UI.</li>
+<li>You want a <strong>simple, low-latency</strong> backbone for microservices (request-reply, events) without operating Kafka/RabbitMQ.</li>
+<li>You need both <strong>ephemeral messaging</strong> (core) and <strong>durable streaming</strong> (JetStream) from one system.</li>
+<li>Reach for <strong>Kafka</strong> instead when you need very high-throughput, long-retention log analytics with a large partitioned-log ecosystem; <strong>RabbitMQ</strong> for complex broker-side routing/AMQP semantics.</li>
 </ul>
 <h2 id="related">Related<a class="headerlink" href="#related" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../">Overview: New &amp; Concurrent Hooks</a></li>
-<li><a href="../use-action-state/"><code>useActionState</code></a> — form-level state &amp; result</li>
-<li><a href="../use-optimistic/"><code>useOptimistic</code></a> — instant feedback during submit</li>
+<li><a href="core-nats/">Core NATS</a> — subjects, pub/sub, request-reply, queue groups</li>
+<li><a href="jetstream/">JetStream</a> — streams, consumers, acks, retention, dedup</li>
 </ul>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://react.dev/reference/react-dom/hooks/useFormStatus"><code>useFormStatus</code> — React DOM reference</a></li>
+<li><a href="https://docs.nats.io/nats-concepts/overview">NATS Concepts — Overview</a></li>
+<li><a href="https://docs.nats.io/nats-concepts/what-is-nats">What is NATS</a></li>
+<li><a href="https://docs.nats.io/reference/faq">FAQ — delivery guarantees</a></li>
 </ul>
 
 
@@ -1259,7 +1191,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../use-effect-event/" class="md-footer__link md-footer__link--prev" aria-label="Previous: useEffectEvent">
+          <a href="../../.." class="md-footer__link md-footer__link--prev" aria-label="Previous: Interview Prep">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1269,20 +1201,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                useEffectEvent
+                Interview Prep
               </div>
             </div>
           </a>
         
         
           
-          <a href="../use-optimistic/" class="md-footer__link md-footer__link--next" aria-label="Next: useOptimistic">
+          <a href="core-nats/" class="md-footer__link md-footer__link--next" aria-label="Next: Core NATS">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                useOptimistic
+                Core NATS
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1314,10 +1246,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.indexes", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.tooltips"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.indexes", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
