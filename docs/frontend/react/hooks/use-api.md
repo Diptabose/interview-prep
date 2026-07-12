@@ -49,7 +49,7 @@ function HorizontalRule({ show }) {
 }
 ```
 
-<details>
+<details markdown="1">
 <summary>Deeper dive — where the promise must come from, error handling</summary>
 
 **Don't create the promise during render.** `use(fetch('/x'))` creates a *new* promise every render, so React suspends forever / refetches endlessly. The promise must be **stable across renders**:

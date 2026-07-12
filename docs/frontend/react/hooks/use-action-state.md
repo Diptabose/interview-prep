@@ -46,7 +46,7 @@ function ChangeName() {
 
 Note the Action signature is `(previousState, formData)` — the first arg is the previous state, **not** the event. React passes the form's `FormData` as the second argument automatically.
 
-<details>
+<details markdown="1">
 <summary>Deeper dive — Actions, calling outside a form, permalink, useFormState rename</summary>
 
 **Renamed from `useFormState`.** In the React Canary this hook was `useFormState` (from `react-dom`). React 19 renamed it to **`useActionState`** and moved it to **`react`**, and added the `isPending` value. `react-dom`'s `useFormState` is deprecated — migrate the import.

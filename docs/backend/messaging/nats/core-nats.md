@@ -89,7 +89,7 @@ for await (const m of sub) {
 
 Scaling up = start another process; scaling down = stop one (use `drain()` to finish in-flight work first).
 
-<details>
+<details markdown="1">
 <summary>Deeper dive — at-most-once semantics, ordering, drain vs close, legacy client</summary>
 
 **At-most-once delivery.** Core NATS never stores messages and has no acks. A message is delivered to whoever is connected *right now*; if a subscriber is down or slow past its limits, it simply misses the message. Messages from a *single* publisher arrive **in order**; there's no ordering guarantee *across* publishers. For durability/redelivery you must move to [JetStream](jetstream.md).

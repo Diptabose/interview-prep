@@ -42,7 +42,7 @@ function ChatRoom({ roomId, theme }) {
 
 Change `theme` → no reconnect, but the *next* "connected" notification uses the new theme. Change `roomId` → reconnect, as it should. `onConnected` is deliberately **absent** from the dependency array.
 
-<details>
+<details markdown="1">
 <summary>Deeper dive — why it works & the strict usage rules</summary>
 
 **Why it's not reactive.** An Effect Event's function identity **intentionally changes every render**, and the linter special-cases it so you never put it in deps. Conceptually it's like a ref to "the latest version of this callback" — calling it reaches through to the most recent render's values.

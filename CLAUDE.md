@@ -39,12 +39,13 @@ Notes are **for learning** — explain, don't just list.
 - **Diagrams must be Mermaid, never ASCII art.** The site renders Mermaid natively (```mermaid fenced blocks). Whenever a flow, architecture, relationship, lifecycle, or sequence would help, draw it as a visually appealing Mermaid diagram (`flowchart`/`graph`, `sequenceDiagram`, `stateDiagram-v2`, `erDiagram`, …). Keep labels meaningful and let the theme handle colors (diagrams auto-adapt to light/dark).
 - Use collapsible blocks to keep long tangents from cluttering the main flow, without losing the depth:
   ```markdown
-  <details>
+  <details markdown="1">
   <summary>Deeper dive / edge cases</summary>
 
   ... optional depth here ...
   </details>
   ```
+  **The `markdown="1"` attribute is required** — without it (via the `md_in_html` extension) the Markdown inside `<details>` renders as literal `**`/backticks instead of being parsed. Keep a blank line after `<summary>` and before `</details>`.
 - Call out **gotchas and common interview traps** explicitly.
 - **Every note ends with a `## References` section** linking to the *exact* official documentation page (deep links, not a docs homepage).
 - Add a `## Related` section with cross-reference links to sibling notes where relevant.
@@ -72,7 +73,7 @@ Explanation in clear prose — enough to genuinely understand the concept.
 // realistic, doc-grounded snippet
 ```
 
-<details>
+<details markdown="1">
 <summary>Deeper dive / edge cases (optional)</summary>
 
 ...

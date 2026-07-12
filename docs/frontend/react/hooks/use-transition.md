@@ -47,7 +47,7 @@ function TabContainer() {
 
 Without the transition, clicking the "Posts" tab (which renders a slow list) would freeze the button. With it, the button responds instantly and the old tab stays visible until the new one is ready.
 
-<details>
+<details markdown="1">
 <summary>Deeper dive — async transitions (React 19 Actions), rules & internals</summary>
 
 **Async transitions (React 19).** `startTransition` now accepts an **async** function. Everything from the call until the last `await` resolves stays part of the transition, so `isPending` stays `true` across the await. This is the foundation of "Actions":

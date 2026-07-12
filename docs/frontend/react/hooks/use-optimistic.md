@@ -47,7 +47,7 @@ function Thread({ messages, sendMessage }) {
 
 The optimistic item (with `sending: true`) appears the instant you submit. When the real update lands, React discards the optimistic layer and renders the actual `messages`.
 
-<details>
+<details markdown="1">
 <summary>Deeper dive — how the revert works, must be inside a transition</summary>
 
 **Automatic revert.** The optimistic value only lives for the duration of the pending transition/Action that dispatched it. React does **not** need you to manually undo it: when the async work finishes and the real `state` prop updates, `optimisticState` simply returns the real value again. On failure, since the real state never changed, you naturally fall back to the pre-submit state (surface the error separately).

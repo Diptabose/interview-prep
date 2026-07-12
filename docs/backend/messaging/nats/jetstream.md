@@ -76,7 +76,7 @@ If you don't `ack()` within the consumer's `ack_wait`, JetStream **redelivers** 
 
 ## Acks, retention, delivery — the levers
 
-<details>
+<details markdown="1">
 <summary>Deeper dive — ack policies, ack types, retention, deliver/replay, dedup & exactly-once</summary>
 
 **Ack policies** (how much acking is required):

@@ -38,7 +38,7 @@ function SearchPage() {
 
 For the deferral to actually save work, the slow child should be wrapped in [`memo`](https://react.dev/reference/react/memo) so it only re-renders when `deferredQuery` changes — not on every keystroke.
 
-<details>
+<details markdown="1">
 <summary>Deeper dive — staleness signal, initialValue, internals</summary>
 
 **Showing "stale" state.** You can compare the live and deferred values to dim old content while the new render is pending:
