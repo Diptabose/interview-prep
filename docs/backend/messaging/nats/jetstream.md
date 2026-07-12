@@ -124,6 +124,9 @@ Combined with consumer **double-ack** (`m.ackAck()` — wait for the server to c
 
 ## Related
 
+- [Stream configuration](stream-config.md) — retention, discard, limits, dedup, replication (the full option set)
+- [Consumer configuration](consumer-config.md) — deliver/ack/replay policies, filtering, flow control
+- [KV store](kv-store.md) · [Object store](object-store.md) — higher-level stores built on JetStream
 - [NATS overview](index.md) — core vs JetStream, delivery guarantees
 - [Core NATS](core-nats.md) — the subjects and patterns JetStream stores on top of
 

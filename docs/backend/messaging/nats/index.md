@@ -59,6 +59,8 @@ flowchart LR
 
 - [Core NATS](core-nats.md) — subjects, pub/sub, request-reply, queue groups
 - [JetStream](jetstream.md) — streams, consumers, acks, retention, dedup
+- [Stream configuration](stream-config.md) · [Consumer configuration](consumer-config.md) — the full option sets
+- [KV store](kv-store.md) · [Object store](object-store.md) — higher-level stores on JetStream
 
 ## References
 
