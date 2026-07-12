@@ -44,6 +44,9 @@ theme:
   icon:
     repo: fontawesome/brands/github
 
+extra:
+  generator: false   # hide the "Made with Material for MkDocs" footer notice
+
 plugins:
   - search
 
