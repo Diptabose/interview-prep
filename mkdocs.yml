@@ -1,0 +1,77 @@
+# MkDocs Material configuration for the interview-prep knowledge base.
+# Content lives in docs/. Nav is generated automatically from the folder tree,
+# so new notes appear with zero config changes.
+
+site_name: Interview Prep
+site_description: Personal interview-prep knowledge base
+site_url: https://diptabose.github.io/interview-prep/
+repo_url: https://github.com/Diptabose/interview-prep
+repo_name: Diptabose/interview-prep
+
+theme:
+  name: material
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.instant      # SPA-style fast page loads
+    - navigation.tracking     # URL updates with active anchor
+    - navigation.top          # back-to-top button
+    - navigation.indexes      # section landing pages (index.md)
+    - navigation.footer       # prev/next links
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy       # copy button on code blocks
+    - content.tooltips
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search
+
+markdown_extensions:
+  # Collapsible <details> blocks (your "Deeper dive" sections)
+  - pymdownx.details
+  - admonition
+  # Fenced code, nested blocks, diagrams
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - tables
+  - attr_list
+  - md_in_html
+  - footnotes
+  - toc:
+      permalink: true
+      toc_depth: 3

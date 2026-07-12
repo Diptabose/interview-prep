@@ -1,0 +1,2 @@
+# Pin the major version; mkdocs-material pulls in mkdocs and pymdown-extensions.
+mkdocs-material>=9.5,<10
