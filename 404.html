@@ -61,6 +61,14 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Interview Prep">
   <link rel="apple-touch-icon" href="/interview-prep/assets/icon-192.png">
+  <script>
+    // Register our hand-written, network-first service worker for offline use.
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("/interview-prep/sw.js").catch(function () {});
+      });
+    }
+  </script>
 
   </head>
   
