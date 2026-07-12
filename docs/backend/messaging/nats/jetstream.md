@@ -7,12 +7,11 @@
 - A **stream** captures and stores messages for a set of subjects (e.g. `orders.>`). Storage is **file** or **memory**, with limits and a retention policy.
 - A **consumer** is a *stateful cursor* over a stream. It tracks which messages have been delivered and acknowledged, and redelivers un-acked ones. Multiple consumers can read the same stream independently.
 
-```
-publish orders.new ─▶ [ Stream: ORDERS  subjects: orders.>  storage: file ]
-                                     │
-                    ┌────────────────┴─────────────────┐
-              Consumer "billing"                 Consumer "audit"
-        (own cursor + ack state)            (own cursor + ack state)
+```mermaid
+flowchart TB
+  P(["Publisher"]) -->|publish orders.new| ST[("Stream: ORDERS<br/>subjects: orders.*<br/>storage: file")]
+  ST --> C1["Consumer: billing<br/>own cursor and ack state"]
+  ST --> C2["Consumer: audit<br/>own cursor and ack state"]
 ```
 
 **Intuition:** the stream is the durable log; the consumer is *your* bookmark into it, with redelivery until you ack.

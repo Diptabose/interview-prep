@@ -24,12 +24,18 @@ All three are **core NATS** and covered in detail in [Core NATS](core-nats.md).
 
 ## Core vs JetStream — the key distinction
 
-```
-                Core NATS                         JetStream
-   publisher ──▶ subject ──▶ subscriber   publisher ──▶ subject ──▶ [STREAM stores it]
-   (if no one is listening,                                              │
-    the message is gone)                        durable CONSUMER ◀───────┘
-                                            (tracks acks, redelivers, replays)
+```mermaid
+flowchart LR
+  subgraph CORE["Core NATS (at-most-once)"]
+    direction LR
+    P1(["Publisher"]) -->|subject| S1(["Subscriber"])
+    P1 -.->|no subscriber connected| X((message lost))
+  end
+  subgraph JETS["JetStream (at-least-once)"]
+    direction LR
+    P2(["Publisher"]) -->|subject| ST[("Stream<br/>stores messages")]
+    ST -->|delivers and redelivers| C["Durable consumer<br/>acks and replays"]
+  end
 ```
 
 - **Core NATS** routes messages *now*. If a subscriber isn't connected, it never sees the message — that's at-most-once.

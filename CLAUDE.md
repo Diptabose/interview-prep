@@ -36,6 +36,7 @@ Notes are **for learning** — explain, don't just list.
 - Open with a short framing: what the concept is and why it matters.
 - Explain the mechanics with real prose where prose helps, backed by **code snippets and examples** (adapt them from official docs rather than inventing behavior).
 - Use tables, bullets, and diagrams where they clarify.
+- **Diagrams must be Mermaid, never ASCII art.** The site renders Mermaid natively (```mermaid fenced blocks). Whenever a flow, architecture, relationship, lifecycle, or sequence would help, draw it as a visually appealing Mermaid diagram (`flowchart`/`graph`, `sequenceDiagram`, `stateDiagram-v2`, `erDiagram`, …). Keep labels meaningful and let the theme handle colors (diagrams auto-adapt to light/dark).
 - Use collapsible blocks to keep long tangents from cluttering the main flow, without losing the depth:
   ```markdown
   <details>
