@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://diptabose.github.io/interview-prep/frontend/react/hooks/use-action-state/">
+        <link rel="canonical" href="https://diptabose.github.io/interview-prep/backend/messaging/nats/stream-config/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../object-store/">
       
       
-        <link rel="next" href="../use-api/">
+        <link rel="next" href="../../../../frontend/react/hooks/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>useActionState - Interview Prep</title>
+        <title>JetStream Stream Configuration - Interview Prep</title>
       
     
     
@@ -101,7 +101,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#useactionstate" class="md-skip">
+        <a href="#jetstream-stream-configuration" class="md-skip">
           Skip to content
         </a>
       
@@ -136,7 +136,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              useActionState
+              JetStream Stream Configuration
             
           </span>
         </div>
@@ -312,8 +312,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -323,11 +325,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -348,7 +350,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -363,8 +365,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -374,11 +378,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
         
           
           <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
@@ -399,7 +403,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -414,6 +418,8 @@
                 
   
   
+    
+  
   
   
     
@@ -439,15 +445,15 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../backend/messaging/nats/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -471,7 +477,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -491,7 +497,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../backend/messaging/nats/consumer-config/" class="md-nav__link">
+      <a href="../consumer-config/" class="md-nav__link">
         
   
   
@@ -519,7 +525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../backend/messaging/nats/core-nats/" class="md-nav__link">
+      <a href="../core-nats/" class="md-nav__link">
         
   
   
@@ -547,7 +553,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../backend/messaging/nats/jetstream/" class="md-nav__link">
+      <a href="../jetstream/" class="md-nav__link">
         
   
   
@@ -575,7 +581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../backend/messaging/nats/kv-store/" class="md-nav__link">
+      <a href="../kv-store/" class="md-nav__link">
         
   
   
@@ -603,7 +609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../backend/messaging/nats/object-store/" class="md-nav__link">
+      <a href="../object-store/" class="md-nav__link">
         
   
   
@@ -622,241 +628,6 @@
     </li>
   
 
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../backend/messaging/nats/stream-config/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    JetStream Stream Configuration
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Frontend
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Frontend
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    React
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    React
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" checked>
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hooks
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_1_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Hooks
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
               
             
               
@@ -882,7 +653,7 @@
   <span class="md-ellipsis">
     
   
-    useActionState
+    JetStream Stream Configuration
   
 
     
@@ -900,7 +671,7 @@
   <span class="md-ellipsis">
     
   
-    useActionState
+    JetStream Stream Configuration
   
 
     
@@ -926,10 +697,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#retention-policy-when-is-a-message-eligible-for-removal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        Retention policy — when is a message eligible for removal?
       
     </span>
   </a>
@@ -937,10 +708,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
+  <a href="#discard-policy-what-happens-when-a-limit-is-reached" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example
+        Discard policy — what happens when a limit is reached?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limits-the-caps-that-drive-limits-retention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limits — the caps that drive limits retention
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-replication-dedup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage, replication, dedup
       
     </span>
   </a>
@@ -989,6 +782,207 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Frontend
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    React
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    React
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../frontend/react/hooks/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hooks
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hooks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
               
                 
   
@@ -996,7 +990,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-api/" class="md-nav__link">
+      <a href="../../../../frontend/react/hooks/use-action-state/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    useActionState
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../frontend/react/hooks/use-api/" class="md-nav__link">
         
   
   
@@ -1024,7 +1046,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-deferred-value/" class="md-nav__link">
+      <a href="../../../../frontend/react/hooks/use-deferred-value/" class="md-nav__link">
         
   
   
@@ -1052,7 +1074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-effect-event/" class="md-nav__link">
+      <a href="../../../../frontend/react/hooks/use-effect-event/" class="md-nav__link">
         
   
   
@@ -1080,7 +1102,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-form-status/" class="md-nav__link">
+      <a href="../../../../frontend/react/hooks/use-form-status/" class="md-nav__link">
         
   
   
@@ -1108,7 +1130,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-optimistic/" class="md-nav__link">
+      <a href="../../../../frontend/react/hooks/use-optimistic/" class="md-nav__link">
         
   
   
@@ -1136,7 +1158,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-transition/" class="md-nav__link">
+      <a href="../../../../frontend/react/hooks/use-transition/" class="md-nav__link">
         
   
   
@@ -1207,10 +1229,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#retention-policy-when-is-a-message-eligible-for-removal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        Retention policy — when is a message eligible for removal?
       
     </span>
   </a>
@@ -1218,10 +1240,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
+  <a href="#discard-policy-what-happens-when-a-limit-is-reached" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example
+        Discard policy — what happens when a limit is reached?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limits-the-caps-that-drive-limits-retention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limits — the caps that drive limits retention
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-replication-dedup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage, replication, dedup
       
     </span>
   </a>
@@ -1281,76 +1325,178 @@
   
 
 
-<h1 id="useactionstate">useActionState<a class="headerlink" href="#useactionstate" title="Permanent link">&para;</a></h1>
+<h1 id="jetstream-stream-configuration">JetStream Stream Configuration<a class="headerlink" href="#jetstream-stream-configuration" title="Permanent link">&para;</a></h1>
 <blockquote>
-<p>Wrap an async <strong>Action</strong> and get back <code>[state, formAction, isPending]</code> — React runs the Action inside a transition, stores its return value as state, and tracks pending automatically. The ergonomic core of React 19 form handling. <em>(React 19.0.)</em></p>
+<p>Everything that shapes how a <strong>stream</strong> stores messages: retention, discard, the size/age limits, storage, replication, and dedup. This is where you decide <em>what is kept, for how long, and what happens when limits are hit.</em></p>
 </blockquote>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>Form submissions usually mean juggling three pieces of state by hand: the result/error, whether it's submitting, and re-wiring the submit handler. <code>useActionState</code> collapses all of that into one call.</p>
-<div class="language-jsx highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">formAction</span><span class="p">,</span><span class="w"> </span><span class="nx">isPending</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useActionState</span><span class="p">(</span><span class="nx">actionFn</span><span class="p">,</span><span class="w"> </span><span class="nx">initialState</span><span class="p">,</span><span class="w"> </span><span class="nx">permalink</span><span class="o">?</span><span class="p">);</span>
+<p>Set these when you create/update a stream. Fields shown are the nats.js <code>StreamConfig</code> names; the CLI uses the same concepts as flags.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>nats<span class="w"> </span>stream<span class="w"> </span>add<span class="w"> </span>ORDERS<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span>--subjects<span class="w"> </span><span class="s2">&quot;orders.&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span>--retention<span class="w"> </span>limits<span class="w"> </span>--discard<span class="w"> </span>old<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span>--max-msgs<span class="w"> </span><span class="m">1000000</span><span class="w"> </span>--max-bytes<span class="w"> </span>1GB<span class="w"> </span>--max-age<span class="w"> </span>24h<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span>--max-msg-size<span class="w"> </span>1MB<span class="w"> </span>--max-msgs-per-subject<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span>--storage<span class="w"> </span>file<span class="w"> </span>--replicas<span class="w"> </span><span class="m">3</span><span class="w"> </span>--dupe-window<span class="w"> </span>2m
 </span></code></pre></div>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">jetstreamManager</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@nats-io/jetstream&quot;</span><span class="p">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">RetentionPolicy</span><span class="p">,</span><span class="w"> </span><span class="nx">DiscardPolicy</span><span class="p">,</span><span class="w"> </span><span class="nx">StorageType</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@nats-io/jetstream&quot;</span><span class="p">;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">nanos</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@nats-io/nats-core&quot;</span><span class="p">;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">jsm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">jetstreamManager</span><span class="p">(</span><span class="nx">nc</span><span class="p">);</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">await</span><span class="w"> </span><span class="nx">jsm</span><span class="p">.</span><span class="nx">streams</span><span class="p">.</span><span class="nx">add</span><span class="p">({</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ORDERS&quot;</span><span class="p">,</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="nx">subjects</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;orders.&gt;&quot;</span><span class="p">],</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="nx">retention</span><span class="o">:</span><span class="w"> </span><span class="kt">RetentionPolicy.Limits</span><span class="p">,</span><span class="w">   </span><span class="c1">// limits | interest | workqueue</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="nx">discard</span><span class="o">:</span><span class="w"> </span><span class="kt">DiscardPolicy.Old</span><span class="p">,</span><span class="w">          </span><span class="c1">// old | new</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="nx">max_msgs</span><span class="o">:</span><span class="w"> </span><span class="kt">1_000_000</span><span class="p">,</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="nx">max_bytes</span><span class="o">:</span><span class="w"> </span><span class="kt">1024</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1024</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1024</span><span class="p">,</span><span class="w">       </span><span class="c1">// 1 GiB</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="nx">max_age</span><span class="o">:</span><span class="w"> </span><span class="kt">nanos</span><span class="p">(</span><span class="mf">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">),</span><span class="w"> </span><span class="c1">// durations are NANOSECONDS</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span><span class="nx">max_msg_size</span><span class="o">:</span><span class="w"> </span><span class="kt">1024</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1024</span><span class="p">,</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span><span class="nx">max_msgs_per_subject</span><span class="o">:</span><span class="w"> </span><span class="kt">100</span><span class="p">,</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">  </span><span class="nx">storage</span><span class="o">:</span><span class="w"> </span><span class="kt">StorageType.File</span><span class="p">,</span><span class="w">           </span><span class="c1">// file | memory</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">  </span><span class="nx">num_replicas</span><span class="o">:</span><span class="w"> </span><span class="kt">3</span><span class="p">,</span><span class="w">                     </span><span class="c1">// 1..5</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">  </span><span class="nx">duplicate_window</span><span class="o">:</span><span class="w"> </span><span class="kt">nanos</span><span class="p">(</span><span class="mf">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">),</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="p">});</span>
+</span></code></pre></div>
+<h2 id="retention-policy-when-is-a-message-eligible-for-removal">Retention policy — <em>when is a message eligible for removal?</em><a class="headerlink" href="#retention-policy-when-is-a-message-eligible-for-removal" title="Permanent link">&para;</a></h2>
+<p>The single most important choice. (default: <code>limits</code>)</p>
+<table>
+<thead>
+<tr>
+<th>Policy</th>
+<th>A message is removed when…</th>
+<th>Use for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>limits</code></td>
+<td>a configured <strong>limit</strong> is hit (max msgs/bytes/age…). Otherwise it stays — even after every consumer acked it.</td>
+<td>event logs, replayable history, audit</td>
+</tr>
+<tr>
+<td><code>interest</code></td>
+<td><strong>all</strong> consumers that had interest at publish time have acked it.</td>
+<td>fan-out where you only keep what's still needed</td>
+</tr>
+<tr>
+<td><code>workqueue</code></td>
+<td><strong>one</strong> consumer acks it (each message consumed exactly once).</td>
+<td>distributed job/task queue</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>flowchart TD
+  M["New message stored"] --&gt; R{Retention?}
+  R --&gt;|limits| L["Kept until a limit is hit&lt;br/&gt;(replayable)"]
+  R --&gt;|interest| I["Removed once all interested&lt;br/&gt;consumers ack"]
+  R --&gt;|workqueue| W["Removed once one&lt;br/&gt;consumer acks"]</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">workqueue trap</p>
+<p>Under <code>workqueue</code>, a given message can be delivered to only <strong>one</strong> consumer. You cannot have two overlapping consumers fan-out the same subject — the second add errors or splits the subject space. Need fan-out? Use <code>limits</code> or <code>interest</code>.</p>
+</div>
+<h2 id="discard-policy-what-happens-when-a-limit-is-reached">Discard policy — <em>what happens when a limit is reached?</em><a class="headerlink" href="#discard-policy-what-happens-when-a-limit-is-reached" title="Permanent link">&para;</a></h2>
+<p>(default: <code>old</code>) Applies to <code>max_msgs</code> / <code>max_bytes</code> (and per-subject via <code>discard_new_per_subject</code>).</p>
 <ul>
-<li><code>actionFn(previousState, formData)</code> → the async Action. Its <strong>return value becomes the new <code>state</code></strong>.</li>
-<li><code>initialState</code> → the state before the first run.</li>
-<li><code>formAction</code> → pass this to a <code>&lt;form action={formAction}&gt;</code> (or a button <code>formAction</code>). React wraps the call in a transition for you.</li>
-<li><code>isPending</code> → <code>true</code> while the Action is running.</li>
-<li><code>permalink?</code> → URL for progressive enhancement (form works before JS hydrates, on Server Components).</li>
+<li><code>old</code> — drop the <strong>oldest</strong> messages to make room. New writes always succeed (lossy at the tail).</li>
+<li><code>new</code> — <strong>reject</strong> new writes once full; the publish gets an error. Preserves existing data; back-pressures the publisher.</li>
+<li><code>discard_new_per_subject</code> (2.10) — apply <code>new</code> semantics per subject; requires <code>max_msgs_per_subject</code>.</li>
 </ul>
-<p><strong>Intuition:</strong> "<code>useReducer</code> for async form submits — the reducer is an async function, and React hands me the pending flag and result for free."</p>
-<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
-<div class="language-jsx highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useActionState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span><span class="p">;</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">updateName</span><span class="p">(</span><span class="nx">previousState</span><span class="p">,</span><span class="w"> </span><span class="nx">formData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">submitName</span><span class="p">(</span><span class="nx">formData</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">));</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="w"> </span><span class="p">};</span><span class="w">          </span><span class="c1">// returned value → next `state`</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">success</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">};</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="kd">function</span><span class="w"> </span><span class="nx">ChangeName</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">formAction</span><span class="p">,</span><span class="w"> </span><span class="nx">isPending</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useActionState</span><span class="p">(</span><span class="nx">updateName</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="p">});</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="p">&lt;</span><span class="nt">form</span><span class="w"> </span><span class="na">action</span><span class="o">=</span><span class="p">{</span><span class="nx">formAction</span><span class="p">}&gt;</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">input</span><span class="w"> </span><span class="na">name</span><span class="o">=</span><span class="s">&quot;name&quot;</span><span class="w"> </span><span class="p">/&gt;</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">disabled</span><span class="o">=</span><span class="p">{</span><span class="nx">isPending</span><span class="p">}&gt;</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">        </span><span class="p">{</span><span class="nx">isPending</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;Saving…&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Update&#39;</span><span class="p">}</span>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">      </span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">      </span><span class="p">{</span><span class="nx">state</span><span class="p">.</span><span class="nx">error</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">p</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">&quot;error&quot;</span><span class="p">&gt;{</span><span class="nx">state</span><span class="p">.</span><span class="nx">error</span><span class="p">}&lt;/</span><span class="nt">p</span><span class="p">&gt;}</span>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">  </span><span class="p">);</span>
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="p">}</span>
-</span></code></pre></div>
-<p>Note the Action signature is <code>(previousState, formData)</code> — the first arg is the previous state, <strong>not</strong> the event. React passes the form's <code>FormData</code> as the second argument automatically.</p>
+<h2 id="limits-the-caps-that-drive-limits-retention">Limits — the caps that drive <code>limits</code> retention<a class="headerlink" href="#limits-the-caps-that-drive-limits-retention" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Meaning</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>max_msgs</code></td>
+<td>max message count in the stream</td>
+<td>-1 (unlimited)</td>
+</tr>
+<tr>
+<td><code>max_bytes</code></td>
+<td>max total bytes stored</td>
+<td>-1</td>
+</tr>
+<tr>
+<td><code>max_age</code></td>
+<td>max age of any message (<strong>nanoseconds</strong>)</td>
+<td>0 (no age limit)</td>
+</tr>
+<tr>
+<td><code>max_msgs_per_subject</code></td>
+<td>per-subject message cap (e.g. keep last N per key)</td>
+<td>-1</td>
+</tr>
+<tr>
+<td><code>max_msg_size</code></td>
+<td>largest single message accepted</td>
+<td>-1</td>
+</tr>
+<tr>
+<td><code>max_consumers</code></td>
+<td>max consumers allowed on the stream</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table>
+<p><code>max_msgs_per_subject = 1</code> is the trick behind "keep only the latest value per subject" (and how the <a href="../kv-store/">KV store</a> keeps history).</p>
+<h2 id="storage-replication-dedup">Storage, replication, dedup<a class="headerlink" href="#storage-replication-dedup" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><code>storage</code></strong>: <code>file</code> (default, durable) or <code>memory</code> (fast, lost on restart).</li>
+<li><strong><code>num_replicas</code></strong>: 1–5. In a cluster, 3 gives quorum-based fault tolerance (RAFT).</li>
+<li><strong><code>duplicate_window</code></strong>: sliding window (nanoseconds) during which a repeated <code>Nats-Msg-Id</code> is deduplicated — the basis of exactly-once publishing. Larger window = more dedup memory.</li>
+</ul>
 <details>
-<summary>Deeper dive — Actions, calling outside a form, permalink, useFormState rename</summary>
-<p><strong>Renamed from <code>useFormState</code>.</strong> In the React Canary this hook was <code>useFormState</code> (from <code>react-dom</code>). React 19 renamed it to <strong><code>useActionState</code></strong> and moved it to <strong><code>react</code></strong>, and added the <code>isPending</code> value. <code>react-dom</code>'s <code>useFormState</code> is deprecated — migrate the import.</p>
-<p><strong>You don't need a <code>&lt;form&gt;</code>.</strong> <code>formAction</code> is just a dispatch function. You can call it directly, but it <strong>must run inside a transition</strong> (calling it as a form <code>action</code> does this automatically):</p>
-<div class="language-jsx highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useActionState</span><span class="p">,</span><span class="w"> </span><span class="nx">startTransition</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span><span class="p">;</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">submitAction</span><span class="p">,</span><span class="w"> </span><span class="nx">isPending</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useActionState</span><span class="p">(</span><span class="nx">reducerAction</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nx">startTransition</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">submitAction</span><span class="p">(</span><span class="nx">payload</span><span class="p">));</span><span class="w"> </span><span class="c1">// manual dispatch</span>
-</span></code></pre></div>
-<p><strong>Progressive enhancement / <code>permalink</code>.</strong> With Server Components, if the form is submitted before JS loads, the browser navigates to <code>permalink</code> and the Server Action still runs — so the form works without hydration.</p>
-<p><strong>Chaining state.</strong> Because the Action receives <code>previousState</code>, you can accumulate — e.g. a counter or a multi-step wizard — just like a reducer.</p>
+<summary>Deeper dive — mirrors/sources, republish, transforms, direct get, compression, governance, TTLs</summary>
+<p><strong>Replication topologies</strong></p>
+<ul>
+<li><code>mirror</code> (2.2) — the stream is a read-only copy of another stream (clients can't publish to it directly).</li>
+<li><code>sources</code> (2.2) — aggregate one or more upstream streams into this one; clients can still publish locally.</li>
+<li><code>allow_direct</code> (2.9) / <code>mirror_direct</code> (2.9) — allow fast "direct get" of a message by sequence/subject served by any replica or mirror (used heavily by KV/Object for low-latency reads).</li>
+</ul>
+<p><strong>Message routing / shaping</strong></p>
+<ul>
+<li><code>republish</code> (2.8.3) — automatically re-publish each stored message to another subject (e.g. to bridge into core NATS).</li>
+<li><code>subject_transform</code> (2.10) — rewrite a message's subject before storing.</li>
+<li><code>compression</code> (<strong>2.10</strong>) — <code>s2</code> (Snappy) compression for file storage; trades CPU for disk.</li>
+</ul>
+<p><strong>Governance / safety</strong></p>
+<ul>
+<li><code>deny_delete</code>, <code>deny_purge</code> (2.6.2) — block the delete/purge APIs.</li>
+<li><code>sealed</code> (2.6.2) — make the stream append-only-then-frozen; <strong>irreversible</strong>.</li>
+<li><code>no_ack</code> (2.2) — disable publish acks (rarely used; e.g. pure request/reply over a stream).</li>
+<li><code>allow_rollup_hdrs</code> (2.6.2) — allow the <code>Nats-Rollup</code> header to purge prior messages (used by KV <code>put</code>/purge).</li>
+</ul>
+<p><strong>TTL &amp; placement</strong></p>
+<ul>
+<li><code>allow_msg_ttl</code> + <code>subject_delete_marker_ttl</code> (2.11) — per-message TTLs.</li>
+<li><code>placement</code> — pin the stream to a cluster/tag.</li>
+<li><code>metadata</code> (2.10) — arbitrary app key/value labels on the stream.</li>
+</ul>
 </details>
 <h2 id="gotchas">Gotchas<a class="headerlink" href="#gotchas" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Argument order trap:</strong> the Action is <code>(previousState, formData)</code>, not <code>(formData)</code> or <code>(event)</code>. Forgetting <code>previousState</code> is the #1 mistake.</li>
-<li><strong>The return value is the state.</strong> If your Action returns nothing, <code>state</code> becomes <code>undefined</code> on the next render.</li>
-<li><strong>Import from <code>react</code></strong>, not <code>react-dom</code> (that's the old <code>useFormState</code>).</li>
-<li>Pending state is per-Action; to expose pending to <em>children</em> of the form without prop-drilling, use <a href="../use-form-status/"><code>useFormStatus</code></a> instead.</li>
+<li><strong>Durations are nanoseconds</strong> in the config (<code>max_age</code>, <code>duplicate_window</code>). Use the client's <code>nanos()</code> helper; passing milliseconds silently means a near-zero window.</li>
+<li><strong><code>limits</code> retention keeps acked messages.</strong> Consuming a message does <em>not</em> delete it under <code>limits</code> — only the limits do. Interviewers love this: "I acked everything, why is the stream still full?"</li>
+<li><strong><code>discard: new</code> errors the publisher</strong> when full — handle the rejected <code>PubAck</code>. With <code>old</code>, you instead silently lose the oldest data.</li>
+<li><strong>Shrinking limits doesn't instantly reclaim</strong> to the exact new value at all times; enforcement is continuous but think in terms of eventual trimming.</li>
+<li><strong><code>num_replicas</code> only matters in a cluster</strong>; a single server ignores &gt;1.</li>
 </ul>
 <h2 id="related">Related<a class="headerlink" href="#related" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../">Overview: New &amp; Concurrent Hooks</a></li>
-<li><a href="../use-form-status/"><code>useFormStatus</code></a> — read pending state deep inside the form</li>
-<li><a href="../use-optimistic/"><code>useOptimistic</code></a> — show instant feedback while the Action runs</li>
-<li><a href="../use-transition/"><code>useTransition</code></a> — the async-transition machinery underneath</li>
+<li><a href="../jetstream/">JetStream</a> — the streams/consumers model these options configure</li>
+<li><a href="../consumer-config/">Consumer configuration</a> — the read-side counterpart (deliver/ack/replay)</li>
+<li><a href="../kv-store/">KV store</a> · <a href="../object-store/">Object store</a> — higher-level stores built on streams</li>
 </ul>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://react.dev/reference/react/useActionState"><code>useActionState</code> — React reference</a></li>
-<li><a href="https://react.dev/blog/2024/12/05/react-19#actions">React v19: Actions &amp; <code>useActionState</code></a></li>
+<li><a href="https://docs.nats.io/nats-concepts/jetstream/streams">Streams — configuration</a></li>
+<li><a href="https://docs.nats.io/using-nats/developer/develop_jetstream/model_deep_dive">JetStream model deep dive (retention)</a></li>
+<li><a href="https://github.com/nats-io/nats.js/blob/main/jetstream/README.md">nats.js — JetStream README</a></li>
 </ul>
 
 
@@ -1387,7 +1533,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: New &amp;amp; Concurrent Hooks (React 18 &amp;amp; 19)">
+          <a href="../object-store/" class="md-footer__link md-footer__link--prev" aria-label="Previous: JetStream Object Store">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1397,20 +1543,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                New &amp; Concurrent Hooks (React 18 &amp; 19)
+                JetStream Object Store
               </div>
             </div>
           </a>
         
         
           
-          <a href="../use-api/" class="md-footer__link md-footer__link--next" aria-label="Next: use">
+          <a href="../../../../frontend/react/hooks/" class="md-footer__link md-footer__link--next" aria-label="Next: New &amp;amp; Concurrent Hooks (React 18 &amp;amp; 19)">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                use
+                New &amp; Concurrent Hooks (React 18 &amp; 19)
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://diptabose.github.io/interview-prep/frontend/react/hooks/use-action-state/">
+        <link rel="canonical" href="https://diptabose.github.io/interview-prep/backend/messaging/nats/object-store/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../kv-store/">
       
       
-        <link rel="next" href="../use-api/">
+        <link rel="next" href="../stream-config/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>useActionState - Interview Prep</title>
+        <title>JetStream Object Store - Interview Prep</title>
       
     
     
@@ -101,7 +101,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#useactionstate" class="md-skip">
+        <a href="#jetstream-object-store" class="md-skip">
           Skip to content
         </a>
       
@@ -136,7 +136,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              useActionState
+              JetStream Object Store
             
           </span>
         </div>
@@ -312,8 +312,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -323,11 +325,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -348,7 +350,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -363,8 +365,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -374,11 +378,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
         
           
           <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
@@ -399,7 +403,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -414,6 +418,8 @@
                 
   
   
+    
+  
   
   
     
@@ -439,15 +445,15 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../backend/messaging/nats/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -471,7 +477,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -491,7 +497,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../backend/messaging/nats/consumer-config/" class="md-nav__link">
+      <a href="../consumer-config/" class="md-nav__link">
         
   
   
@@ -519,7 +525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../backend/messaging/nats/core-nats/" class="md-nav__link">
+      <a href="../core-nats/" class="md-nav__link">
         
   
   
@@ -547,7 +553,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../backend/messaging/nats/jetstream/" class="md-nav__link">
+      <a href="../jetstream/" class="md-nav__link">
         
   
   
@@ -575,7 +581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../backend/messaging/nats/kv-store/" class="md-nav__link">
+      <a href="../kv-store/" class="md-nav__link">
         
   
   
@@ -594,269 +600,6 @@
     </li>
   
 
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../backend/messaging/nats/object-store/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    JetStream Object Store
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../backend/messaging/nats/stream-config/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    JetStream Stream Configuration
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Frontend
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Frontend
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    React
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    React
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" checked>
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hooks
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_1_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Hooks
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
               
             
               
@@ -882,7 +625,7 @@
   <span class="md-ellipsis">
     
   
-    useActionState
+    JetStream Object Store
   
 
     
@@ -900,7 +643,7 @@
   <span class="md-ellipsis">
     
   
-    useActionState
+    JetStream Object Store
   
 
     
@@ -926,10 +669,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#what-it-is-and-how-its-built" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        What it is and how it's built
       
     </span>
   </a>
@@ -937,10 +680,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
+  <a href="#bucket-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example
+        Bucket configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kv-vs-object-store-which-one" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KV vs Object store — which one?
       
     </span>
   </a>
@@ -996,7 +761,264 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-api/" class="md-nav__link">
+      <a href="../stream-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JetStream Stream Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Frontend
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    React
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    React
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../frontend/react/hooks/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hooks
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hooks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../frontend/react/hooks/use-action-state/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    useActionState
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../frontend/react/hooks/use-api/" class="md-nav__link">
         
   
   
@@ -1024,7 +1046,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-deferred-value/" class="md-nav__link">
+      <a href="../../../../frontend/react/hooks/use-deferred-value/" class="md-nav__link">
         
   
   
@@ -1052,7 +1074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-effect-event/" class="md-nav__link">
+      <a href="../../../../frontend/react/hooks/use-effect-event/" class="md-nav__link">
         
   
   
@@ -1080,7 +1102,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-form-status/" class="md-nav__link">
+      <a href="../../../../frontend/react/hooks/use-form-status/" class="md-nav__link">
         
   
   
@@ -1108,7 +1130,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-optimistic/" class="md-nav__link">
+      <a href="../../../../frontend/react/hooks/use-optimistic/" class="md-nav__link">
         
   
   
@@ -1136,7 +1158,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-transition/" class="md-nav__link">
+      <a href="../../../../frontend/react/hooks/use-transition/" class="md-nav__link">
         
   
   
@@ -1207,10 +1229,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#what-it-is-and-how-its-built" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        What it is and how it's built
       
     </span>
   </a>
@@ -1218,10 +1240,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
+  <a href="#bucket-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example
+        Bucket configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kv-vs-object-store-which-one" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KV vs Object store — which one?
       
     </span>
   </a>
@@ -1281,76 +1325,147 @@
   
 
 
-<h1 id="useactionstate">useActionState<a class="headerlink" href="#useactionstate" title="Permanent link">&para;</a></h1>
+<h1 id="jetstream-object-store">JetStream Object Store<a class="headerlink" href="#jetstream-object-store" title="Permanent link">&para;</a></h1>
 <blockquote>
-<p>Wrap an async <strong>Action</strong> and get back <code>[state, formAction, isPending]</code> — React runs the Action inside a transition, stores its return value as state, and tracks pending automatically. The ergonomic core of React 19 form handling. <em>(React 19.0.)</em></p>
+<p>A <strong>file/blob store</strong> built on JetStream: put and get objects of arbitrary size, streamed in <strong>chunks</strong>, with metadata, integrity digests, and change <strong>watching</strong> — backed by a regular stream.</p>
 </blockquote>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>Form submissions usually mean juggling three pieces of state by hand: the result/error, whether it's submitting, and re-wiring the submit handler. <code>useActionState</code> collapses all of that into one call.</p>
-<div class="language-jsx highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">formAction</span><span class="p">,</span><span class="w"> </span><span class="nx">isPending</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useActionState</span><span class="p">(</span><span class="nx">actionFn</span><span class="p">,</span><span class="w"> </span><span class="nx">initialState</span><span class="p">,</span><span class="w"> </span><span class="nx">permalink</span><span class="o">?</span><span class="p">);</span>
+<h2 id="what-it-is-and-how-its-built">What it is and how it's built<a class="headerlink" href="#what-it-is-and-how-its-built" title="Permanent link">&para;</a></h2>
+<p>An Object <strong>bucket</strong> is a JetStream stream named <code>OBJ_&lt;bucket&gt;</code>. Each object is split into fixed-size <strong>chunks</strong> (default <strong>128 K</strong>, configurable) published to a chunk subject, plus a <strong>meta</strong> message describing the object (name, size, digest, headers). This lets files larger than a single NATS message move safely over the infrastructure.</p>
+<pre class="mermaid"><code>flowchart LR
+  F["large file"] --&gt; C["split into 128K chunks"]
+  C --&gt; S[("Stream OBJ_assets&lt;br/&gt;chunks + meta per object")]
+  S --&gt; G["get: reassemble chunks, stream back to client"]</code></pre>
+<blockquote>
+<p>⚠️ It is <strong>not</strong> a distributed storage system — every object in a bucket must fit on the target server's file system. Think "S3-lite for config/artifacts over NATS," not a scale-out blob store.</p>
+</blockquote>
+<h2 id="bucket-configuration">Bucket configuration<a class="headerlink" href="#bucket-configuration" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Meaning</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>description</code></td>
+<td>human description</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>ttl</code></td>
+<td>expire objects by age</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>max_bytes</code></td>
+<td>cap total bucket size</td>
+<td>unlimited</td>
+</tr>
+<tr>
+<td><code>storage</code></td>
+<td><code>file</code> or <code>memory</code></td>
+<td>file</td>
+</tr>
+<tr>
+<td><code>replicas</code></td>
+<td>replica count (cluster)</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>compression</code></td>
+<td>s2 compression</td>
+<td>off</td>
+</tr>
+</tbody>
+</table>
+<h2 id="operations">Operations<a class="headerlink" href="#operations" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>nats<span class="w"> </span>object<span class="w"> </span>add<span class="w"> </span>assets
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>nats<span class="w"> </span>object<span class="w"> </span>put<span class="w"> </span>assets<span class="w"> </span>./report.pdf
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>nats<span class="w"> </span>object<span class="w"> </span>get<span class="w"> </span>assets<span class="w"> </span>report.pdf<span class="w"> </span>--output<span class="w"> </span>./out.pdf
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>nats<span class="w"> </span>object<span class="w"> </span>ls<span class="w"> </span>assets
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>nats<span class="w"> </span>object<span class="w"> </span>info<span class="w"> </span>assets<span class="w"> </span>report.pdf
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>nats<span class="w"> </span>object<span class="w"> </span>del<span class="w"> </span>assets<span class="w"> </span>report.pdf
 </span></code></pre></div>
-<ul>
-<li><code>actionFn(previousState, formData)</code> → the async Action. Its <strong>return value becomes the new <code>state</code></strong>.</li>
-<li><code>initialState</code> → the state before the first run.</li>
-<li><code>formAction</code> → pass this to a <code>&lt;form action={formAction}&gt;</code> (or a button <code>formAction</code>). React wraps the call in a transition for you.</li>
-<li><code>isPending</code> → <code>true</code> while the Action is running.</li>
-<li><code>permalink?</code> → URL for progressive enhancement (form works before JS hydrates, on Server Components).</li>
-</ul>
-<p><strong>Intuition:</strong> "<code>useReducer</code> for async form submits — the reducer is an async function, and React hands me the pending flag and result for free."</p>
-<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
-<div class="language-jsx highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useActionState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<div class="language-typescript highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Objm</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@nats-io/obj&quot;</span><span class="p">;</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">updateName</span><span class="p">(</span><span class="nx">previousState</span><span class="p">,</span><span class="w"> </span><span class="nx">formData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">submitName</span><span class="p">(</span><span class="nx">formData</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">));</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="w"> </span><span class="p">};</span><span class="w">          </span><span class="c1">// returned value → next `state`</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">success</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">};</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="kd">function</span><span class="w"> </span><span class="nx">ChangeName</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">formAction</span><span class="p">,</span><span class="w"> </span><span class="nx">isPending</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useActionState</span><span class="p">(</span><span class="nx">updateName</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="p">});</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="p">&lt;</span><span class="nt">form</span><span class="w"> </span><span class="na">action</span><span class="o">=</span><span class="p">{</span><span class="nx">formAction</span><span class="p">}&gt;</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">input</span><span class="w"> </span><span class="na">name</span><span class="o">=</span><span class="s">&quot;name&quot;</span><span class="w"> </span><span class="p">/&gt;</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">disabled</span><span class="o">=</span><span class="p">{</span><span class="nx">isPending</span><span class="p">}&gt;</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">        </span><span class="p">{</span><span class="nx">isPending</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;Saving…&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Update&#39;</span><span class="p">}</span>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">      </span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">      </span><span class="p">{</span><span class="nx">state</span><span class="p">.</span><span class="nx">error</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">p</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">&quot;error&quot;</span><span class="p">&gt;{</span><span class="nx">state</span><span class="p">.</span><span class="nx">error</span><span class="p">}&lt;/</span><span class="nt">p</span><span class="p">&gt;}</span>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">  </span><span class="p">);</span>
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="p">}</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">objm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Objm</span><span class="p">(</span><span class="nx">js</span><span class="p">);</span><span class="w">                 </span><span class="c1">// or new Objm(nc)</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kd">const</span><span class="w"> </span><span class="nx">os</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">objm</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s2">&quot;assets&quot;</span><span class="p">);</span><span class="w">    </span><span class="c1">// or objm.open(&quot;assets&quot;)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1">// small in-memory blob</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">await</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">putBlob</span><span class="p">({</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;note.txt&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TextEncoder</span><span class="p">().</span><span class="nx">encode</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">));</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="kd">const</span><span class="w"> </span><span class="nx">bytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">getBlob</span><span class="p">(</span><span class="s2">&quot;note.txt&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// Uint8Array | null</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1">// large file: stream it in (Web ReadableStream / Node stream)</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="k">await</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">put</span><span class="p">({</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;report.pdf&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">meta</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">headers</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">readableStream</span><span class="p">);</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="kd">const</span><span class="w"> </span><span class="nx">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">&quot;report.pdf&quot;</span><span class="p">);</span><span class="w">    </span><span class="c1">// size, chunks, digest, mtime…</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="kd">const</span><span class="w"> </span><span class="nx">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">list</span><span class="p">();</span><span class="w">                </span><span class="c1">// ObjectInfo[]</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="kd">const</span><span class="w"> </span><span class="nx">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">status</span><span class="p">();</span><span class="w">            </span><span class="c1">// { bucket, size, ... }</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="k">await</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s2">&quot;report.pdf&quot;</span><span class="p">);</span><span class="w">               </span><span class="c1">// removes chunks + meta</span>
 </span></code></pre></div>
-<p>Note the Action signature is <code>(previousState, formData)</code> — the first arg is the previous state, <strong>not</strong> the event. React passes the form's <code>FormData</code> as the second argument automatically.</p>
+<p>Each object's <strong>info</strong> includes its <code>size</code>, <code>chunks</code>, an <code>mtime</code>, and a <strong><code>digest</code></strong> (SHA-256) used to verify integrity on read.</p>
 <details>
-<summary>Deeper dive — Actions, calling outside a form, permalink, useFormState rename</summary>
-<p><strong>Renamed from <code>useFormState</code>.</strong> In the React Canary this hook was <code>useFormState</code> (from <code>react-dom</code>). React 19 renamed it to <strong><code>useActionState</code></strong> and moved it to <strong><code>react</code></strong>, and added the <code>isPending</code> value. <code>react-dom</code>'s <code>useFormState</code> is deprecated — migrate the import.</p>
-<p><strong>You don't need a <code>&lt;form&gt;</code>.</strong> <code>formAction</code> is just a dispatch function. You can call it directly, but it <strong>must run inside a transition</strong> (calling it as a form <code>action</code> does this automatically):</p>
-<div class="language-jsx highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useActionState</span><span class="p">,</span><span class="w"> </span><span class="nx">startTransition</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span><span class="p">;</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">submitAction</span><span class="p">,</span><span class="w"> </span><span class="nx">isPending</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useActionState</span><span class="p">(</span><span class="nx">reducerAction</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nx">startTransition</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">submitAction</span><span class="p">(</span><span class="nx">payload</span><span class="p">));</span><span class="w"> </span><span class="c1">// manual dispatch</span>
-</span></code></pre></div>
-<p><strong>Progressive enhancement / <code>permalink</code>.</strong> With Server Components, if the form is submitted before JS loads, the browser navigates to <code>permalink</code> and the Server Action still runs — so the form works without hydration.</p>
-<p><strong>Chaining state.</strong> Because the Action receives <code>previousState</code>, you can accumulate — e.g. a counter or a multi-step wizard — just like a reducer.</p>
+<summary>Deeper dive — chunking, digests, links, watch, delete semantics</summary>
+<p><strong>Chunking.</strong> The default chunk size is 128 K; lower it (e.g. 32 K) on constrained links or when the server caps <code>max_payload</code>. <code>get</code>/<code>getBlob</code> reassembles chunks in order and streams them back.</p>
+<p><strong>Integrity.</strong> On <code>put</code>, the client computes a SHA-256 <strong>digest</strong> stored in the object meta; on <code>get</code> the digest is verified, so corruption/partial writes are detected.</p>
+<p><strong>Links.</strong> You can create a <strong>link</strong> — an object that points to another object (or another bucket), like a symlink — via <code>os.link(name, target)</code> / <code>addLink</code>, useful for aliasing "latest" to a versioned object.</p>
+<p><strong>Watch.</strong> <code>os.watch()</code> notifies on successful put/delete in the bucket (metadata changes), so you can react to new/updated artifacts.</p>
+<p><strong>Delete reclaims chunks.</strong> Deleting an object purges its chunk messages from the underlying stream (a rollup/purge), not just a tombstone — so space is actually reclaimed.</p>
 </details>
+<h2 id="kv-vs-object-store-which-one">KV vs Object store — which one?<a class="headerlink" href="#kv-vs-object-store-which-one" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><a href="../kv-store/">KV store</a></th>
+<th>Object store</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Value size</td>
+<td>small (a <code>max_value_size</code>, fits one message)</td>
+<td>large / arbitrary (chunked)</td>
+</tr>
+<tr>
+<td>Semantics</td>
+<td>key → latest value, revisions, CAS, history</td>
+<td>named files/blobs with metadata + digest</td>
+</tr>
+<tr>
+<td>Use for</td>
+<td>config, feature flags, session/state, counters</td>
+<td>artifacts, images, documents, backups</td>
+</tr>
+<tr>
+<td>Concurrency</td>
+<td>revision-based compare-and-set</td>
+<td>whole-object put/get (no CAS)</td>
+</tr>
+</tbody>
+</table>
+<p>Rule of thumb: <strong>small structured values → KV; whole files/binaries → Object store.</strong></p>
 <h2 id="gotchas">Gotchas<a class="headerlink" href="#gotchas" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Argument order trap:</strong> the Action is <code>(previousState, formData)</code>, not <code>(formData)</code> or <code>(event)</code>. Forgetting <code>previousState</code> is the #1 mistake.</li>
-<li><strong>The return value is the state.</strong> If your Action returns nothing, <code>state</code> becomes <code>undefined</code> on the next render.</li>
-<li><strong>Import from <code>react</code></strong>, not <code>react-dom</code> (that's the old <code>useFormState</code>).</li>
-<li>Pending state is per-Action; to expose pending to <em>children</em> of the form without prop-drilling, use <a href="../use-form-status/"><code>useFormStatus</code></a> instead.</li>
+<li><strong>Not distributed storage.</strong> A bucket's data must fit on the target file system — don't treat it as scalable blob storage; that's what real object stores (S3, etc.) are for.</li>
+<li><strong><code>getBlob</code> loads the whole object into memory.</strong> For large files use the streaming <code>put</code>/<code>get</code> APIs instead.</li>
+<li><strong>Whole-object writes, no partial update.</strong> Updating an object replaces it (new revision of chunks); there's no in-place edit or CAS like KV.</li>
+<li><strong>Chunk size vs <code>max_payload</code>.</strong> If chunk size exceeds the server's <code>max_payload</code>, puts fail — keep chunks ≤ the server limit.</li>
+<li><strong><code>get</code>/<code>info</code> on a missing object returns null/errors</strong> — check before use.</li>
 </ul>
 <h2 id="related">Related<a class="headerlink" href="#related" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../">Overview: New &amp; Concurrent Hooks</a></li>
-<li><a href="../use-form-status/"><code>useFormStatus</code></a> — read pending state deep inside the form</li>
-<li><a href="../use-optimistic/"><code>useOptimistic</code></a> — show instant feedback while the Action runs</li>
-<li><a href="../use-transition/"><code>useTransition</code></a> — the async-transition machinery underneath</li>
+<li><a href="../kv-store/">KV store</a> — sibling store for small structured values</li>
+<li><a href="../stream-config/">Stream configuration</a> — the stream that backs the bucket</li>
+<li><a href="../jetstream/">JetStream</a> — the persistence layer underneath</li>
 </ul>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://react.dev/reference/react/useActionState"><code>useActionState</code> — React reference</a></li>
-<li><a href="https://react.dev/blog/2024/12/05/react-19#actions">React v19: Actions &amp; <code>useActionState</code></a></li>
+<li><a href="https://docs.nats.io/nats-concepts/jetstream/obj_store">Object Store — concept</a></li>
+<li><a href="https://docs.nats.io/using-nats/developer/develop_jetstream/object">Using the Object Store</a></li>
+<li><a href="https://github.com/nats-io/nats.js/blob/main/obj/README.md">nats.js — Object Store README</a></li>
 </ul>
 
 
@@ -1387,7 +1502,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: New &amp;amp; Concurrent Hooks (React 18 &amp;amp; 19)">
+          <a href="../kv-store/" class="md-footer__link md-footer__link--prev" aria-label="Previous: JetStream KV Store">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1397,20 +1512,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                New &amp; Concurrent Hooks (React 18 &amp; 19)
+                JetStream KV Store
               </div>
             </div>
           </a>
         
         
           
-          <a href="../use-api/" class="md-footer__link md-footer__link--next" aria-label="Next: use">
+          <a href="../stream-config/" class="md-footer__link md-footer__link--next" aria-label="Next: JetStream Stream Configuration">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                use
+                JetStream Stream Configuration
               </div>
             </div>
             <div class="md-footer__button md-icon">

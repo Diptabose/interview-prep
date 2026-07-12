@@ -9,11 +9,27 @@
          <lastmod>2026-07-12</lastmod>
     </url>
     <url>
+         <loc>https://diptabose.github.io/interview-prep/backend/messaging/nats/consumer-config/</loc>
+         <lastmod>2026-07-12</lastmod>
+    </url>
+    <url>
          <loc>https://diptabose.github.io/interview-prep/backend/messaging/nats/core-nats/</loc>
          <lastmod>2026-07-12</lastmod>
     </url>
     <url>
          <loc>https://diptabose.github.io/interview-prep/backend/messaging/nats/jetstream/</loc>
+         <lastmod>2026-07-12</lastmod>
+    </url>
+    <url>
+         <loc>https://diptabose.github.io/interview-prep/backend/messaging/nats/kv-store/</loc>
+         <lastmod>2026-07-12</lastmod>
+    </url>
+    <url>
+         <loc>https://diptabose.github.io/interview-prep/backend/messaging/nats/object-store/</loc>
+         <lastmod>2026-07-12</lastmod>
+    </url>
+    <url>
+         <loc>https://diptabose.github.io/interview-prep/backend/messaging/nats/stream-config/</loc>
          <lastmod>2026-07-12</lastmod>
     </url>
     <url>
