@@ -1179,10 +1179,8 @@
 </span></code></pre></div>
 <p>Without the transition, clicking the "Posts" tab (which renders a slow list) would freeze the button. With it, the button responds instantly and the old tab stays visible until the new one is ready.</p>
 <details>
-<summary>Deeper dive — async transitions (React 19 Actions), rules & internals</summary>
-
-**Async transitions (React 19).** `startTransition` now accepts an **async** function. Everything from the call until the last `await` resolves stays part of the transition, so `isPending` stays `true` across the await. This is the foundation of "Actions":
-
+<summary>Deeper dive — async transitions (React 19 Actions), rules &amp; internals</summary>
+<p><strong>Async transitions (React 19).</strong> <code>startTransition</code> now accepts an <strong>async</strong> function. Everything from the call until the last <code>await</code> resolves stays part of the transition, so <code>isPending</code> stays <code>true</code> across the await. This is the foundation of "Actions":</p>
 <div class="language-jsx highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">UpdateName</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">isPending</span><span class="p">,</span><span class="w"> </span><span class="nx">startTransition</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useTransition</span><span class="p">();</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">error</span><span class="p">,</span><span class="w"> </span><span class="nx">setError</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
@@ -1197,16 +1195,14 @@
 </span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">  </span><span class="c1">// ...</span>
 </span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="p">}</span>
 </span></code></pre></div>
-
-**Rules / internals**
-
-- The function passed to `startTransition` must be **synchronous in its state updates** relative to the call — updates scheduled outside it (e.g. in a later `setTimeout`) are *not* part of the transition.
-- Transitions are **interruptible**: if a new urgent update arrives, React can throw away the in-progress render and restart.
-- A transition does **not** block the browser — unlike a synchronous update, React yields so the paint stays smooth.
-- Don't put text-input `value` updates in a transition; controlled inputs need synchronous updates or they feel laggy. Defer the *consumer* of that value instead (see [`useDeferredValue`](use-deferred-value.md)).
-
+<p><strong>Rules / internals</strong></p>
+<ul>
+<li>The function passed to <code>startTransition</code> must be <strong>synchronous in its state updates</strong> relative to the call — updates scheduled outside it (e.g. in a later <code>setTimeout</code>) are <em>not</em> part of the transition.</li>
+<li>Transitions are <strong>interruptible</strong>: if a new urgent update arrives, React can throw away the in-progress render and restart.</li>
+<li>A transition does <strong>not</strong> block the browser — unlike a synchronous update, React yields so the paint stays smooth.</li>
+<li>Don't put text-input <code>value</code> updates in a transition; controlled inputs need synchronous updates or they feel laggy. Defer the <em>consumer</em> of that value instead (see <a href="../use-deferred-value/"><code>useDeferredValue</code></a>).</li>
+</ul>
 </details>
-
 <h2 id="gotchas">Gotchas<a class="headerlink" href="#gotchas" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong><code>startTransition</code> vs the hook.</strong> There's a standalone <code>startTransition</code> import too, but only the <code>useTransition</code> version gives you <code>isPending</code>. Use the hook when you need the pending flag.</li>

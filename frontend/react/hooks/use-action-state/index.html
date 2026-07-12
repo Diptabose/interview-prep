@@ -1182,23 +1182,16 @@
 <p>Note the Action signature is <code>(previousState, formData)</code> — the first arg is the previous state, <strong>not</strong> the event. React passes the form's <code>FormData</code> as the second argument automatically.</p>
 <details>
 <summary>Deeper dive — Actions, calling outside a form, permalink, useFormState rename</summary>
-
-**Renamed from `useFormState`.** In the React Canary this hook was `useFormState` (from `react-dom`). React 19 renamed it to **`useActionState`** and moved it to **`react`**, and added the `isPending` value. `react-dom`'s `useFormState` is deprecated — migrate the import.
-
-**You don't need a `<form>`.** `formAction` is just a dispatch function. You can call it directly, but it **must run inside a transition** (calling it as a form `action` does this automatically):
-
+<p><strong>Renamed from <code>useFormState</code>.</strong> In the React Canary this hook was <code>useFormState</code> (from <code>react-dom</code>). React 19 renamed it to <strong><code>useActionState</code></strong> and moved it to <strong><code>react</code></strong>, and added the <code>isPending</code> value. <code>react-dom</code>'s <code>useFormState</code> is deprecated — migrate the import.</p>
+<p><strong>You don't need a <code>&lt;form&gt;</code>.</strong> <code>formAction</code> is just a dispatch function. You can call it directly, but it <strong>must run inside a transition</strong> (calling it as a form <code>action</code> does this automatically):</p>
 <div class="language-jsx highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useActionState</span><span class="p">,</span><span class="w"> </span><span class="nx">startTransition</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span><span class="p">;</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">submitAction</span><span class="p">,</span><span class="w"> </span><span class="nx">isPending</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useActionState</span><span class="p">(</span><span class="nx">reducerAction</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nx">startTransition</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">submitAction</span><span class="p">(</span><span class="nx">payload</span><span class="p">));</span><span class="w"> </span><span class="c1">// manual dispatch</span>
 </span></code></pre></div>
-
-**Progressive enhancement / `permalink`.** With Server Components, if the form is submitted before JS loads, the browser navigates to `permalink` and the Server Action still runs — so the form works without hydration.
-
-**Chaining state.** Because the Action receives `previousState`, you can accumulate — e.g. a counter or a multi-step wizard — just like a reducer.
-
+<p><strong>Progressive enhancement / <code>permalink</code>.</strong> With Server Components, if the form is submitted before JS loads, the browser navigates to <code>permalink</code> and the Server Action still runs — so the form works without hydration.</p>
+<p><strong>Chaining state.</strong> Because the Action receives <code>previousState</code>, you can accumulate — e.g. a counter or a multi-step wizard — just like a reducer.</p>
 </details>
-
 <h2 id="gotchas">Gotchas<a class="headerlink" href="#gotchas" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Argument order trap:</strong> the Action is <code>(previousState, formData)</code>, not <code>(formData)</code> or <code>(event)</code>. Forgetting <code>previousState</code> is the #1 mistake.</li>

@@ -1182,18 +1182,14 @@
 </span></code></pre></div>
 <details>
 <summary>Deeper dive — where the promise must come from, error handling</summary>
-
-**Don't create the promise during render.** `use(fetch('/x'))` creates a *new* promise every render, so React suspends forever / refetches endlessly. The promise must be **stable across renders**:
-
-- **Preferred:** create it in a **Server Component** and pass it down to a Client Component that calls `use`. React streams the result.
-- **Otherwise:** cache it (e.g. a framework-integrated cache or a module-level `Map`). A raw `useMemo` isn't a guaranteed cache and isn't the sanctioned pattern.
-
-**Error handling.** Don't wrap `use(promise)` in `try/catch` — it throws internally to drive Suspense. Handle rejections with an `<ErrorBoundary>` (optionally combined with the promise's `.catch`).
-
-**Server Components caveat.** Reading *context* with `use` is not supported in Server Components (context is a client concept). Reading promises is the primary server→client pattern.
-
+<p><strong>Don't create the promise during render.</strong> <code>use(fetch('/x'))</code> creates a <em>new</em> promise every render, so React suspends forever / refetches endlessly. The promise must be <strong>stable across renders</strong>:</p>
+<ul>
+<li><strong>Preferred:</strong> create it in a <strong>Server Component</strong> and pass it down to a Client Component that calls <code>use</code>. React streams the result.</li>
+<li><strong>Otherwise:</strong> cache it (e.g. a framework-integrated cache or a module-level <code>Map</code>). A raw <code>useMemo</code> isn't a guaranteed cache and isn't the sanctioned pattern.</li>
+</ul>
+<p><strong>Error handling.</strong> Don't wrap <code>use(promise)</code> in <code>try/catch</code> — it throws internally to drive Suspense. Handle rejections with an <code>&lt;ErrorBoundary&gt;</code> (optionally combined with the promise's <code>.catch</code>).</p>
+<p><strong>Server Components caveat.</strong> Reading <em>context</em> with <code>use</code> is not supported in Server Components (context is a client concept). Reading promises is the primary server→client pattern.</p>
 </details>
-
 <h2 id="gotchas">Gotchas<a class="headerlink" href="#gotchas" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Callable in conditions/loops — that's the headline difference</strong> from <code>useContext</code> and all hooks. But it must still be called inside a component or a custom hook, not at module top level.</li>

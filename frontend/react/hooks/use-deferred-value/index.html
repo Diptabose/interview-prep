@@ -1172,9 +1172,7 @@
 <p>For the deferral to actually save work, the slow child should be wrapped in <a href="https://react.dev/reference/react/memo"><code>memo</code></a> so it only re-renders when <code>deferredQuery</code> changes — not on every keystroke.</p>
 <details>
 <summary>Deeper dive — staleness signal, initialValue, internals</summary>
-
-**Showing "stale" state.** You can compare the live and deferred values to dim old content while the new render is pending:
-
+<p><strong>Showing "stale" state.</strong> You can compare the live and deferred values to dim old content while the new render is pending:</p>
 <div class="language-jsx highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">deferredQuery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useDeferredValue</span><span class="p">(</span><span class="nx">query</span><span class="p">);</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">isStale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">query</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">deferredQuery</span><span class="p">;</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">return</span><span class="w"> </span><span class="p">(</span>
@@ -1183,16 +1181,11 @@
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">);</span>
 </span></code></pre></div>
-
-**`initialValue` (React 19).** The optional second argument is used for the *first* render, before the real value is available — handy for the initial mount so you can defer even the first (potentially expensive) render:
-
+<p><strong><code>initialValue</code> (React 19).</strong> The optional second argument is used for the <em>first</em> render, before the real value is available — handy for the initial mount so you can defer even the first (potentially expensive) render:</p>
 <div class="language-jsx highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">deferredQuery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useDeferredValue</span><span class="p">(</span><span class="nx">query</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// renders with &#39;&#39; first, then query</span>
 </span></code></pre></div>
-
-**Internals.** Like transitions, the deferred re-render is **interruptible** and low-priority; a new keystroke abandons the in-progress background render and restarts. React only ever renders *one extra* background pass, not one per intermediate value — it always converges to the latest.
-
+<p><strong>Internals.</strong> Like transitions, the deferred re-render is <strong>interruptible</strong> and low-priority; a new keystroke abandons the in-progress background render and restarts. React only ever renders <em>one extra</em> background pass, not one per intermediate value — it always converges to the latest.</p>
 </details>
-
 <h2 id="gotchas">Gotchas<a class="headerlink" href="#gotchas" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong><code>memo</code> is usually required.</strong> Without <code>React.memo</code> (or the same-reference trick), the slow child re-renders anyway and the deferral buys nothing.</li>

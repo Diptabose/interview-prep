@@ -1270,25 +1270,17 @@
 <p>Scaling up = start another process; scaling down = stop one (use <code>drain()</code> to finish in-flight work first).</p>
 <details>
 <summary>Deeper dive — at-most-once semantics, ordering, drain vs close, legacy client</summary>
-
-**At-most-once delivery.** Core NATS never stores messages and has no acks. A message is delivered to whoever is connected *right now*; if a subscriber is down or slow past its limits, it simply misses the message. Messages from a *single* publisher arrive **in order**; there's no ordering guarantee *across* publishers. For durability/redelivery you must move to [JetStream](jetstream.md).
-
-**Slow consumers.** Each subscription has buffer limits; a subscriber that can't keep up is marked a "slow consumer" and may drop messages — protecting the server and other clients.
-
-**`drain()` vs `close()`.** `close()` tears down immediately; `drain()` unsubscribes, processes everything already in flight, then closes — the graceful path for shutdown and queue-group scale-down.
-
-**Client versions.** The examples use **nats.js v3** modular packages (`@nats-io/transport-node`, and `@nats-io/jetstream` for JetStream). In the **legacy `nats` v2** package you instead did:
-
+<p><strong>At-most-once delivery.</strong> Core NATS never stores messages and has no acks. A message is delivered to whoever is connected <em>right now</em>; if a subscriber is down or slow past its limits, it simply misses the message. Messages from a <em>single</em> publisher arrive <strong>in order</strong>; there's no ordering guarantee <em>across</em> publishers. For durability/redelivery you must move to <a href="../jetstream/">JetStream</a>.</p>
+<p><strong>Slow consumers.</strong> Each subscription has buffer limits; a subscriber that can't keep up is marked a "slow consumer" and may drop messages — protecting the server and other clients.</p>
+<p><strong><code>drain()</code> vs <code>close()</code>.</strong> <code>close()</code> tears down immediately; <code>drain()</code> unsubscribes, processes everything already in flight, then closes — the graceful path for shutdown and queue-group scale-down.</p>
+<p><strong>Client versions.</strong> The examples use <strong>nats.js v3</strong> modular packages (<code>@nats-io/transport-node</code>, and <code>@nats-io/jetstream</code> for JetStream). In the <strong>legacy <code>nats</code> v2</strong> package you instead did:</p>
 <div class="language-typescript highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">connect</span><span class="p">,</span><span class="w"> </span><span class="nx">StringCodec</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;nats&quot;</span><span class="p">;</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">nc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">connect</span><span class="p">({</span><span class="w"> </span><span class="nx">servers</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;localhost:4222&quot;</span><span class="w"> </span><span class="p">});</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">sc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">StringCodec</span><span class="p">();</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nx">nc</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="s2">&quot;subj&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">sc</span><span class="p">.</span><span class="nx">encode</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">));</span><span class="w">   </span><span class="c1">// v2 required explicit codecs</span>
 </span></code></pre></div>
-
-v3 accepts strings/`Uint8Array` directly and exposes `m.string()` / `m.json()` helpers.
-
+<p>v3 accepts strings/<code>Uint8Array</code> directly and exposes <code>m.string()</code> / <code>m.json()</code> helpers.</p>
 </details>
-
 <h2 id="gotchas">Gotchas<a class="headerlink" href="#gotchas" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>No persistence in core NATS.</strong> A common trap: expecting a subscriber that connects <em>later</em> to receive earlier messages. It won't — that's JetStream's job.</li>

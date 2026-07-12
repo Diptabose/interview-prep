@@ -1176,21 +1176,17 @@
 </span></code></pre></div>
 <p>Change <code>theme</code> → no reconnect, but the <em>next</em> "connected" notification uses the new theme. Change <code>roomId</code> → reconnect, as it should. <code>onConnected</code> is deliberately <strong>absent</strong> from the dependency array.</p>
 <details>
-<summary>Deeper dive — why it works & the strict usage rules</summary>
-
-**Why it's not reactive.** An Effect Event's function identity **intentionally changes every render**, and the linter special-cases it so you never put it in deps. Conceptually it's like a ref to "the latest version of this callback" — calling it reaches through to the most recent render's values.
-
-**Strict rules (the linter enforces these):**
-
-1. **Only call it from inside Effects** (or other Effect Events) — never during render or from regular event handlers.
-2. **Never pass it** to other components or hooks (it's local, unstable by design).
-3. **Never put it in a dependency array.**
-4. Declare it at the top level of the component/hook (normal Hook rules).
-
-**Not a license to hide deps.** If a value genuinely should re-synchronize the Effect (like `roomId`), it belongs in deps — *not* hidden inside an Effect Event. Use it only for logic that should read fresh values but not drive re-runs (analytics, notifications, logging the latest state on an event).
-
+<summary>Deeper dive — why it works &amp; the strict usage rules</summary>
+<p><strong>Why it's not reactive.</strong> An Effect Event's function identity <strong>intentionally changes every render</strong>, and the linter special-cases it so you never put it in deps. Conceptually it's like a ref to "the latest version of this callback" — calling it reaches through to the most recent render's values.</p>
+<p><strong>Strict rules (the linter enforces these):</strong></p>
+<ol>
+<li><strong>Only call it from inside Effects</strong> (or other Effect Events) — never during render or from regular event handlers.</li>
+<li><strong>Never pass it</strong> to other components or hooks (it's local, unstable by design).</li>
+<li><strong>Never put it in a dependency array.</strong></li>
+<li>Declare it at the top level of the component/hook (normal Hook rules).</li>
+</ol>
+<p><strong>Not a license to hide deps.</strong> If a value genuinely should re-synchronize the Effect (like <code>roomId</code>), it belongs in deps — <em>not</em> hidden inside an Effect Event. Use it only for logic that should read fresh values but not drive re-runs (analytics, notifications, logging the latest state on an event).</p>
 </details>
-
 <h2 id="gotchas">Gotchas<a class="headerlink" href="#gotchas" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Version-gated:</strong> stable only from <strong>React 19.2</strong>. In 19.0/19.1 it was <code>experimental_useEffectEvent</code>; in React 18 it wasn't available (ponyfills exist). Confirm the runtime version before relying on the bare <code>useEffectEvent</code> import.</li>

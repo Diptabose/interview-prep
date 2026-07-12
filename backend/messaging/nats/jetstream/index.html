@@ -1245,41 +1245,62 @@
 <p>If you don't <code>ack()</code> within the consumer's <code>ack_wait</code>, JetStream <strong>redelivers</strong> — the basis of at-least-once.</p>
 <h2 id="acks-retention-delivery-the-levers">Acks, retention, delivery — the levers<a class="headerlink" href="#acks-retention-delivery-the-levers" title="Permanent link">&para;</a></h2>
 <details>
-<summary>Deeper dive — ack policies, ack types, retention, deliver/replay, dedup & exactly-once</summary>
-
-**Ack policies** (how much acking is required):
-
-| Policy | Meaning |
-|--------|---------|
-| `none` | no acks; fire-and-forget over stored data |
-| `all` | acking message N acks all up to N |
-| `explicit` | every message must be acked individually (required for most work-queue setups) |
-
-**Ack types** the client can send: `ack` (done), `nak` (redeliver, optionally with delay), `term` (stop redelivering — poison message), `working`/in-progress (reset the ack timer for long jobs).
-
-**Retention policies** (when stored messages are removed):
-
-| Retention | Removes messages… |
-|-----------|-------------------|
-| `limits` (default) | only when a limit is hit — max messages, bytes, or age. Messages persist for replay. |
-| `interest` | once **all** consumers with interest have acked them. |
-| `workqueue` | as soon as **one** consumer acks — the stream acts as a distributed work queue (each message consumed once). |
-
-**Deliver policy** (where a new consumer starts): `all`, `last`, `new`, `by_start_sequence`, `by_start_time`, `last_per_subject`. **Replay policy**: `instant` (as fast as possible) or `original` (preserve original timing).
-
-**Deduplication & exactly-once.** Set a `Nats-Msg-Id` header on publish; within the stream's **duplicate window**, JetStream drops repeats — so publisher retries don't create duplicates:
-
+<summary>Deeper dive — ack policies, ack types, retention, deliver/replay, dedup &amp; exactly-once</summary>
+<p><strong>Ack policies</strong> (how much acking is required):</p>
+<table>
+<thead>
+<tr>
+<th>Policy</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>none</code></td>
+<td>no acks; fire-and-forget over stored data</td>
+</tr>
+<tr>
+<td><code>all</code></td>
+<td>acking message N acks all up to N</td>
+</tr>
+<tr>
+<td><code>explicit</code></td>
+<td>every message must be acked individually (required for most work-queue setups)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ack types</strong> the client can send: <code>ack</code> (done), <code>nak</code> (redeliver, optionally with delay), <code>term</code> (stop redelivering — poison message), <code>working</code>/in-progress (reset the ack timer for long jobs).</p>
+<p><strong>Retention policies</strong> (when stored messages are removed):</p>
+<table>
+<thead>
+<tr>
+<th>Retention</th>
+<th>Removes messages…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>limits</code> (default)</td>
+<td>only when a limit is hit — max messages, bytes, or age. Messages persist for replay.</td>
+</tr>
+<tr>
+<td><code>interest</code></td>
+<td>once <strong>all</strong> consumers with interest have acked them.</td>
+</tr>
+<tr>
+<td><code>workqueue</code></td>
+<td>as soon as <strong>one</strong> consumer acks — the stream acts as a distributed work queue (each message consumed once).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Deliver policy</strong> (where a new consumer starts): <code>all</code>, <code>last</code>, <code>new</code>, <code>by_start_sequence</code>, <code>by_start_time</code>, <code>last_per_subject</code>. <strong>Replay policy</strong>: <code>instant</code> (as fast as possible) or <code>original</code> (preserve original timing).</p>
+<p><strong>Deduplication &amp; exactly-once.</strong> Set a <code>Nats-Msg-Id</code> header on publish; within the stream's <strong>duplicate window</strong>, JetStream drops repeats — so publisher retries don't create duplicates:</p>
 <div class="language-typescript highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">await</span><span class="w"> </span><span class="nx">js</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="s2">&quot;orders.new&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">payload</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">msgID</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;order-1&quot;</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">// dedup key</span>
 </span></code></pre></div>
-
-Combined with consumer **double-ack** (`m.ackAck()` — wait for the server to confirm it received your ack), this yields **exactly-once within the window**. Note it's bounded by the dedup window, not infinite.
-
-**Push vs pull consumers.** Push consumers deliver automatically to a subject (flow-controlled); pull consumers let clients request batches on demand. Pull is now the recommended default — easier scaling and back-pressure. Multiple client instances binding the same durable pull consumer share the workload (like a queue group over durable data).
-
-**Beyond streams.** JetStream also powers **KV store** (`@nats-io/kv`) and **Object store** (`@nats-io/obj`), both implemented as streams under the hood.
-
+<p>Combined with consumer <strong>double-ack</strong> (<code>m.ackAck()</code> — wait for the server to confirm it received your ack), this yields <strong>exactly-once within the window</strong>. Note it's bounded by the dedup window, not infinite.</p>
+<p><strong>Push vs pull consumers.</strong> Push consumers deliver automatically to a subject (flow-controlled); pull consumers let clients request batches on demand. Pull is now the recommended default — easier scaling and back-pressure. Multiple client instances binding the same durable pull consumer share the workload (like a queue group over durable data).</p>
+<p><strong>Beyond streams.</strong> JetStream also powers <strong>KV store</strong> (<code>@nats-io/kv</code>) and <strong>Object store</strong> (<code>@nats-io/obj</code>), both implemented as streams under the hood.</p>
 </details>
-
 <h2 id="gotchas">Gotchas<a class="headerlink" href="#gotchas" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Publishing to a subject not captured by any stream</strong> just behaves like core NATS (not stored). The stream's <code>subjects</code> must match.</li>

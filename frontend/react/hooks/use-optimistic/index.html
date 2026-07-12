@@ -1183,15 +1183,10 @@
 <p>The optimistic item (with <code>sending: true</code>) appears the instant you submit. When the real update lands, React discards the optimistic layer and renders the actual <code>messages</code>.</p>
 <details>
 <summary>Deeper dive — how the revert works, must be inside a transition</summary>
-
-**Automatic revert.** The optimistic value only lives for the duration of the pending transition/Action that dispatched it. React does **not** need you to manually undo it: when the async work finishes and the real `state` prop updates, `optimisticState` simply returns the real value again. On failure, since the real state never changed, you naturally fall back to the pre-submit state (surface the error separately).
-
-**Must run inside a transition.** `addOptimistic` has to be called within a transition (or an Action / form `action`), because the optimistic value is tied to that pending transition's lifecycle. Calling it outside one won't behave correctly.
-
-**Pairs with `useActionState`.** In form flows, the Action drives the real state while `useOptimistic` provides the interim view; together they give instant feedback plus a correct final state.
-
+<p><strong>Automatic revert.</strong> The optimistic value only lives for the duration of the pending transition/Action that dispatched it. React does <strong>not</strong> need you to manually undo it: when the async work finishes and the real <code>state</code> prop updates, <code>optimisticState</code> simply returns the real value again. On failure, since the real state never changed, you naturally fall back to the pre-submit state (surface the error separately).</p>
+<p><strong>Must run inside a transition.</strong> <code>addOptimistic</code> has to be called within a transition (or an Action / form <code>action</code>), because the optimistic value is tied to that pending transition's lifecycle. Calling it outside one won't behave correctly.</p>
+<p><strong>Pairs with <code>useActionState</code>.</strong> In form flows, the Action drives the real state while <code>useOptimistic</code> provides the interim view; together they give instant feedback plus a correct final state.</p>
 </details>
-
 <h2 id="gotchas">Gotchas<a class="headerlink" href="#gotchas" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Optimistic state is temporary and derived.</strong> It's not a source of truth — don't try to read it back as persisted state. When the transition ends it's gone.</li>
