@@ -11,4 +11,12 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Interview Prep">
   <link rel="apple-touch-icon" href="{{ 'assets/icon-192.png' | url }}">
+  <script>
+    // Register our hand-written, network-first service worker for offline use.
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("{{ 'sw.js' | url }}").catch(function () {});
+      });
+    }
+  </script>
 {% endblock %}
