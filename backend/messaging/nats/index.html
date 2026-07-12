@@ -1102,12 +1102,17 @@
 </table>
 <p>All three are <strong>core NATS</strong> and covered in detail in <a href="core-nats/">Core NATS</a>.</p>
 <h2 id="core-vs-jetstream-the-key-distinction">Core vs JetStream — the key distinction<a class="headerlink" href="#core-vs-jetstream-the-key-distinction" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>                Core NATS                         JetStream
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>   publisher ──▶ subject ──▶ subscriber   publisher ──▶ subject ──▶ [STREAM stores it]
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>   (if no one is listening,                                              │
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    the message is gone)                        durable CONSUMER ◀───────┘
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                                            (tracks acks, redelivers, replays)
-</span></code></pre></div>
+<pre class="mermaid"><code>flowchart LR
+  subgraph CORE["Core NATS (at-most-once)"]
+    direction LR
+    P1(["Publisher"]) --&gt;|subject| S1(["Subscriber"])
+    P1 -.-&gt;|no subscriber connected| X((message lost))
+  end
+  subgraph JETS["JetStream (at-least-once)"]
+    direction LR
+    P2(["Publisher"]) --&gt;|subject| ST[("Stream&lt;br/&gt;stores messages")]
+    ST --&gt;|delivers and redelivers| C["Durable consumer&lt;br/&gt;acks and replays"]
+  end</code></pre>
 <ul>
 <li><strong>Core NATS</strong> routes messages <em>now</em>. If a subscriber isn't connected, it never sees the message — that's at-most-once.</li>
 <li><strong>JetStream</strong> <em>stores</em> messages in a <strong>stream</strong>, and <strong>consumers</strong> read from that store at their own pace, acking each one. Late subscribers can replay history.</li>
