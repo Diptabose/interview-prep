@@ -10,6 +10,7 @@ repo_name: Diptabose/interview-prep
 
 theme:
   name: material
+  custom_dir: overrides
   favicon: assets/favicon.svg
   logo: assets/favicon.svg
   palette:

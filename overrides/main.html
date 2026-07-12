@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{#
+  Inject the Web App Manifest and mobile web-app meta so the site installs
+  as a standalone PWA (no browser URL bar) on Android/Chrome and iOS.
+#}
+{% block extrahead %}
+  <link rel="manifest" href="{{ 'manifest.webmanifest' | url }}">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Interview Prep">
+  <link rel="apple-touch-icon" href="{{ 'assets/icon-192.png' | url }}">
+{% endblock %}
