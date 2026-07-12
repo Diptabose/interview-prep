@@ -1,0 +1,4 @@
+/* Hide the now-empty footer meta bar (previously held the generator notice). */
+.md-footer-meta {
+  display: none;
+}
