@@ -10,31 +10,31 @@
       
       
       
-        <link rel="canonical" href="https://diptabose.github.io/interview-prep/backend/messaging/nats/">
+        <link rel="canonical" href="https://diptabose.github.io/interview-prep/system-design/data-platform-architecture/">
       
       
-        <link rel="prev" href="../../..">
+        <link rel="prev" href="../multi-tenancy/">
       
       
-        <link rel="next" href="consumer-config/">
+        <link rel="next" href="aws-architecture/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/favicon.svg">
+      <link rel="icon" href="../../assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>NATS - Interview Prep</title>
+        <title>AXIS IQ Data Platform — Architecture Overview - Interview Prep</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,20 +53,20 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
-  <link rel="manifest" href="../../../manifest.webmanifest">
+  <link rel="manifest" href="../../manifest.webmanifest">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Interview Prep">
-  <link rel="apple-touch-icon" href="../../../assets/icon-192.png">
+  <link rel="apple-touch-icon" href="../../assets/icon-192.png">
   <script>
     // Offline support was removed. Clean up any previously-registered service
     // worker and its cache so returning visitors aren't left with a stale one.
@@ -101,7 +101,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#nats" class="md-skip">
+        <a href="#axis-iq-data-platform-architecture-overview" class="md-skip">
           Skip to content
         </a>
       
@@ -117,9 +117,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Interview Prep" class="md-header__button md-logo" aria-label="Interview Prep" data-md-component="logo">
+    <a href="../.." title="Interview Prep" class="md-header__button md-logo" aria-label="Interview Prep" data-md-component="logo">
       
-  <img src="../../../assets/favicon.svg" alt="logo">
+  <img src="../../assets/favicon.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -136,7 +136,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              NATS
+              AXIS IQ Data Platform — Architecture Overview
             
           </span>
         </div>
@@ -259,9 +259,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Interview Prep" class="md-nav__button md-logo" aria-label="Interview Prep" data-md-component="logo">
+    <a href="../.." title="Interview Prep" class="md-nav__button md-logo" aria-label="Interview Prep" data-md-component="logo">
       
-  <img src="../../../assets/favicon.svg" alt="logo">
+  <img src="../../assets/favicon.svg" alt="logo">
 
     </a>
     Interview Prep
@@ -288,7 +288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -312,8 +312,6 @@
       
   
   
-    
-  
   
   
     
@@ -325,11 +323,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -350,7 +348,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -365,8 +363,6 @@
                 
   
   
-    
-  
   
   
     
@@ -378,11 +374,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
         
           
           <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
@@ -403,7 +399,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -418,8 +414,6 @@
                 
   
   
-    
-  
   
   
     
@@ -445,15 +439,15 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../../backend/messaging/nats/" class="md-nav__link ">
               
   
   
@@ -471,13 +465,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_1_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -497,7 +491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="consumer-config/" class="md-nav__link">
+      <a href="../../backend/messaging/nats/consumer-config/" class="md-nav__link">
         
   
   
@@ -525,7 +519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="core-nats/" class="md-nav__link">
+      <a href="../../backend/messaging/nats/core-nats/" class="md-nav__link">
         
   
   
@@ -553,7 +547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="jetstream/" class="md-nav__link">
+      <a href="../../backend/messaging/nats/jetstream/" class="md-nav__link">
         
   
   
@@ -581,7 +575,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kv-store/" class="md-nav__link">
+      <a href="../../backend/messaging/nats/kv-store/" class="md-nav__link">
         
   
   
@@ -609,7 +603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="object-store/" class="md-nav__link">
+      <a href="../../backend/messaging/nats/object-store/" class="md-nav__link">
         
   
   
@@ -637,7 +631,7 @@
   
   
     <li class="md-nav__item">
-      <a href="stream-config/" class="md-nav__link">
+      <a href="../../backend/messaging/nats/stream-config/" class="md-nav__link">
         
   
   
@@ -822,7 +816,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../frontend/react/hooks/" class="md-nav__link ">
+            <a href="../../frontend/react/hooks/" class="md-nav__link ">
               
   
   
@@ -866,7 +860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../frontend/react/hooks/use-action-state/" class="md-nav__link">
+      <a href="../../frontend/react/hooks/use-action-state/" class="md-nav__link">
         
   
   
@@ -894,7 +888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../frontend/react/hooks/use-api/" class="md-nav__link">
+      <a href="../../frontend/react/hooks/use-api/" class="md-nav__link">
         
   
   
@@ -922,7 +916,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../frontend/react/hooks/use-deferred-value/" class="md-nav__link">
+      <a href="../../frontend/react/hooks/use-deferred-value/" class="md-nav__link">
         
   
   
@@ -950,7 +944,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../frontend/react/hooks/use-effect-event/" class="md-nav__link">
+      <a href="../../frontend/react/hooks/use-effect-event/" class="md-nav__link">
         
   
   
@@ -978,7 +972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../frontend/react/hooks/use-form-status/" class="md-nav__link">
+      <a href="../../frontend/react/hooks/use-form-status/" class="md-nav__link">
         
   
   
@@ -1006,7 +1000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../frontend/react/hooks/use-optimistic/" class="md-nav__link">
+      <a href="../../frontend/react/hooks/use-optimistic/" class="md-nav__link">
         
   
   
@@ -1034,7 +1028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../frontend/react/hooks/use-transition/" class="md-nav__link">
+      <a href="../../frontend/react/hooks/use-transition/" class="md-nav__link">
         
   
   
@@ -1082,8 +1076,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -1095,11 +1091,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -1120,7 +1116,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1138,7 +1134,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../system-design/multi-tenancy/" class="md-nav__link">
+      <a href="../multi-tenancy/" class="md-nav__link">
         
   
   
@@ -1163,6 +1159,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1182,15 +1180,15 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../system-design/data-platform-architecture/" class="md-nav__link ">
+            <a href="./" class="md-nav__link md-nav__link--active">
               
   
   
@@ -1208,13 +1206,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+              <label class="md-nav__link md-nav__link--active" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1234,7 +1232,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../system-design/data-platform-architecture/aws-architecture/" class="md-nav__link">
+      <a href="aws-architecture/" class="md-nav__link">
         
   
   
@@ -1262,7 +1260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../system-design/data-platform-architecture/azure-architecture/" class="md-nav__link">
+      <a href="azure-architecture/" class="md-nav__link">
         
   
   
@@ -1290,7 +1288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../system-design/data-platform-architecture/tenant-onboarding/" class="md-nav__link">
+      <a href="tenant-onboarding/" class="md-nav__link">
         
   
   
@@ -1353,10 +1351,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-nats-is" class="md-nav__link">
+  <a href="#why-study-this" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What NATS is
+        Why study this
       
     </span>
   </a>
@@ -1364,10 +1362,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-three-core-messaging-patterns" class="md-nav__link">
+  <a href="#the-tenancy-model-the-key-idea" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The three core messaging patterns
+        The tenancy model (the key idea)
       
     </span>
   </a>
@@ -1375,10 +1373,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#core-vs-jetstream-the-key-distinction" class="md-nav__link">
+  <a href="#end-to-end-data-flow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Core vs JetStream — the key distinction
+        End-to-end data flow
       
     </span>
   </a>
@@ -1386,21 +1384,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#delivery-guarantees-interview-staple" class="md-nav__link">
+  <a href="#aws-azure-service-map" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Delivery guarantees (interview staple)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#when-to-reach-for-nats" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        When to reach for NATS
+        AWS → Azure service map
       
     </span>
   </a>
@@ -1449,108 +1436,248 @@
   
 
 
-<h1 id="nats">NATS<a class="headerlink" href="#nats" title="Permanent link">&para;</a></h1>
+<h1 id="axis-iq-data-platform-architecture-overview">AXIS IQ Data Platform — Architecture Overview<a class="headerlink" href="#axis-iq-data-platform-architecture-overview" title="Permanent link">&para;</a></h1>
 <blockquote>
-<p>A high-performance, open-source messaging system built around <strong>subjects</strong> (hierarchical topics). One lightweight server binary gives you pub/sub, request-reply, and load-balanced queues; <strong>JetStream</strong> adds persistence, replay, and stronger delivery guarantees on top.</p>
+<p>A real-world, <strong>multi-tenant SaaS data platform</strong> (Accordion's "AXIS IQ", DEV environment) that ingests customer source systems, replicates them into Snowflake, transforms them with dbt orchestrated by Dagster, and serves the results through a secured web/API layer with embedded Power BI reporting. This topic explains <strong>every component</strong>, first as built on <strong>AWS</strong>, then re-architected on <strong>Azure</strong>.</p>
 </blockquote>
-<h2 id="what-nats-is">What NATS is<a class="headerlink" href="#what-nats-is" title="Permanent link">&para;</a></h2>
-<p>NATS is a "connective technology" for services, edge, and IoT — think of it as a nervous system where any client can address any other by <strong>subject</strong> without knowing where it lives. Key traits:</p>
+<h2 id="why-study-this">Why study this<a class="headerlink" href="#why-study-this" title="Permanent link">&para;</a></h2>
+<p>It is a compact tour of almost every category a backend/data/cloud interview cares about: DNS, edge security (WAF/CDN), API gateway + auth, containerized microservices with service discovery, an orchestration engine (Dagster), managed + self-managed data stores, secrets/crypto, event-driven onboarding automation, a cloud data warehouse (Snowflake), ELT replication (Fivetran), and multi-cloud glue (AWS + Azure + GitHub + Snowflake). Understanding <em>why</em> each piece exists — and how you'd rebuild it on another cloud — is exactly the kind of systems reasoning interviewers probe.</p>
+<p>Read this page for the <strong>big picture and the AWS↔Azure map</strong>, then dive into:</p>
 <ul>
-<li><strong>Single small binary</strong> (<code>nats-server</code>), no external dependencies (unlike Kafka's ZooKeeper/KRaft or a JVM).</li>
-<li><strong>Subject-based addressing</strong> with wildcards — publishers and subscribers are fully decoupled; there's no fixed "topic" object to create for core messaging.</li>
-<li><strong>Two layers:</strong></li>
-<li><strong><a href="core-nats/">Core NATS</a></strong> — fire-and-forget, in-memory routing, <strong>at-most-once</strong> delivery. Extremely fast, no persistence.</li>
-<li><strong><a href="jetstream/">JetStream</a></strong> — a persistence layer (streams + consumers) giving <strong>at-least-once</strong> and <strong>exactly-once</strong> (within a dedup window) delivery, replay, and stream storage. Built into the same server since NATS Server 2.2.</li>
+<li><a href="aws-architecture/">AWS architecture — component by component</a></li>
+<li><a href="azure-architecture/">Azure re-architecture — the same system on Azure</a></li>
 </ul>
-<h2 id="the-three-core-messaging-patterns">The three core messaging patterns<a class="headerlink" href="#the-three-core-messaging-patterns" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Pattern</th>
-<th>Shape</th>
-<th>Use</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Publish-Subscribe</strong></td>
-<td>1 → N, every subscriber gets a copy</td>
-<td>events, broadcasts</td>
-</tr>
-<tr>
-<td><strong>Request-Reply</strong></td>
-<td>1 ↔ 1, requester awaits a response on a temporary "inbox" subject</td>
-<td>RPC-style calls, service APIs</td>
-</tr>
-<tr>
-<td><strong>Queue groups</strong></td>
-<td>1 → 1-of-N, server picks one member of the group at random</td>
-<td>load-balancing / scaling a service horizontally</td>
-</tr>
-</tbody>
-</table>
-<p>All three are <strong>core NATS</strong> and covered in detail in <a href="core-nats/">Core NATS</a>.</p>
-<h2 id="core-vs-jetstream-the-key-distinction">Core vs JetStream — the key distinction<a class="headerlink" href="#core-vs-jetstream-the-key-distinction" title="Permanent link">&para;</a></h2>
+<h2 id="the-tenancy-model-the-key-idea">The tenancy model (the key idea)<a class="headerlink" href="#the-tenancy-model-the-key-idea" title="Permanent link">&para;</a></h2>
+<p>AXIS IQ is <strong>multi-tenant SaaS</strong>, and the diagram uses one tenant — <strong>NorthBeam</strong> — as the running example. The platform separates two planes:</p>
+<ul>
+<li><strong>Core / shared infra</strong> — deployed once, serves <em>all</em> tenants: DNS, WAF, CDN, the API gateway, the auth (Cognito) layer, the tenant-onboarding automation, shared data stores, secrets, registries.</li>
+<li><strong>Per-tenant deployment</strong> — a dedicated, <em>versioned</em> stack spun up for each tenant: its own <strong>Dagster</strong> orchestration cluster (webserver + daemon + gRPC user code + NGINX), its own Postgres metadata DB, its own Snowflake account, its own secrets namespace (<code>dp/dev/tenants/[tenantid]/...</code>), and its own DNS records (<code>northbeam-data-platform.dev.accordionintelligence.com</code>).</li>
+</ul>
+<pre class="mermaid"><code>flowchart TB
+    subgraph Shared["Core / Shared Infra (once)"]
+        DNS[Route 53 + WAF + CloudFront]
+        API[API Gateway + Cognito]
+        ONB[Step Functions + Lambda&lt;br/&gt;tenant onboarding]
+        REG[(ECR / S3 registries)]
+    end
+    subgraph Tenant["Per-Tenant Stack (per customer, versioned)"]
+        DAG[Dagster: web + daemon + user code]
+        PG[(Postgres metadata)]
+        SF[(Snowflake tenant account&lt;br/&gt;RAW / DEV / PROD)]
+        SEC[Secrets namespace&lt;br/&gt;dp/dev/tenants/id/...]
+    end
+    ONB --&gt;|provisions| Tenant
+    API --&gt; DAG
+    DAG --&gt; SF</code></pre>
+<p><strong>Interview trap:</strong> notice the platform mixes <em>shared</em> and <em>isolated</em> resources. Onboarding (<code>ACCORDION_ORG</code> Snowflake org account → creates <code>AXISIQ_NORTHBEAM</code> tenant account) is the seam. Snowflake isolation is at the <strong>account</strong> level per tenant; app isolation is at the <strong>secret namespace + dedicated Dagster stack</strong> level. Know <em>which resources are shared vs per-tenant and why</em> — it's the crux of any SaaS design question.</p>
+<h2 id="end-to-end-data-flow">End-to-end data flow<a class="headerlink" href="#end-to-end-data-flow" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart LR
-  subgraph CORE["Core NATS (at-most-once)"]
-    direction LR
-    P1(["Publisher"]) --&gt;|subject| S1(["Subscriber"])
-    P1 -.-&gt;|no subscriber connected| X((message lost))
-  end
-  subgraph JETS["JetStream (at-least-once)"]
-    direction LR
-    P2(["Publisher"]) --&gt;|subject| ST[("Stream&lt;br/&gt;stores messages")]
-    ST --&gt;|delivers and redelivers| C["Durable consumer&lt;br/&gt;acks and replays"]
-  end</code></pre>
-<ul>
-<li><strong>Core NATS</strong> routes messages <em>now</em>. If a subscriber isn't connected, it never sees the message — that's at-most-once.</li>
-<li><strong>JetStream</strong> <em>stores</em> messages in a <strong>stream</strong>, and <strong>consumers</strong> read from that store at their own pace, acking each one. Late subscribers can replay history.</li>
-</ul>
-<h2 id="delivery-guarantees-interview-staple">Delivery guarantees (interview staple)<a class="headerlink" href="#delivery-guarantees-interview-staple" title="Permanent link">&para;</a></h2>
+    subgraph Src["Customer Source Systems"]
+        NS[NetSuite / Salesforce / Sage&lt;br/&gt;HubSpot / Ads / GA4]
+    end
+    FT[Fivetran&lt;br/&gt;connector → destination]
+    subgraph Snow["Snowflake (ACCORDION_ORG → tenant acct)"]
+        RAW[(RAW DB)]
+        DEV[(DEV DB)]
+        PROD[(PROD DB)]
+    end
+    subgraph DP["AWS Data Platform"]
+        DAG[Dagster user code&lt;br/&gt;runs dbt]
+        API[API + AI Analyst services]
+    end
+    PBI[Power BI&lt;br/&gt;embedded reports]
+    USER([Tenant user])
+
+    NS --&gt; FT --&gt; RAW
+    DAG --&gt;|dbt transform| RAW
+    RAW --&gt; DEV --&gt; PROD
+    DAG -.orchestrates.-&gt; RAW
+    PROD --&gt; PBI
+    USER --&gt; API --&gt; PROD
+    API --&gt; PBI</code></pre>
+<ol>
+<li><strong>Ingest</strong>: Fivetran connectors pull each source system and land raw data in the tenant's Snowflake <strong>RAW</strong> database.</li>
+<li><strong>Transform</strong>: Dagster schedules/materializes assets; the <strong>user-code</strong> container runs <strong>dbt</strong> models against Snowflake, promoting RAW → DEV → PROD.</li>
+<li><strong>Serve</strong>: the web app + API (behind CloudFront/WAF/API Gateway/Cognito) expose the curated data; <strong>Power BI</strong> embedded reports visualize PROD; an <strong>AI Analyst</strong> service answers questions over the data.</li>
+<li><strong>Onboard</strong>: Step Functions + Lambda provision a new tenant end-to-end (Snowflake account, secrets, DNS, Dagster stack, Cognito, email invite).</li>
+</ol>
+<h2 id="aws-azure-service-map">AWS → Azure service map<a class="headerlink" href="#aws-azure-service-map" title="Permanent link">&para;</a></h2>
+<p>This is the quick-reference table; each row is explained in depth in the <a href="aws-architecture/">AWS</a> and <a href="azure-architecture/">Azure</a> notes.</p>
 <table>
 <thead>
 <tr>
-<th>Layer</th>
-<th>Guarantee</th>
-<th>How</th>
+<th>Concern</th>
+<th>AWS (in the diagram)</th>
+<th>Azure equivalent</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Core NATS</td>
-<td><strong>At-most-once</strong></td>
-<td>No storage, no acks — fast but lossy if no subscriber.</td>
+<td>DNS (public + private)</td>
+<td>Route 53 hosted zones</td>
+<td>Azure DNS + Azure Private DNS zones</td>
 </tr>
 <tr>
-<td>JetStream</td>
-<td><strong>At-least-once</strong></td>
-<td>Stream stores the message; consumer redelivers until acked.</td>
+<td>Virtual network</td>
+<td>VPC, public/private subnets</td>
+<td>Virtual Network (VNet) + subnets</td>
 </tr>
 <tr>
-<td>JetStream</td>
-<td><strong>Exactly-once</strong> (within a window)</td>
-<td>Publisher dedup via <code>Nats-Msg-Id</code> + consumer <strong>double-ack</strong>.</td>
+<td>Private API → backend</td>
+<td>API Gateway <strong>VPC Link</strong></td>
+<td>APIM VNet integration / Private Endpoint</td>
+</tr>
+<tr>
+<td>Service discovery</td>
+<td><strong>AWS Cloud Map</strong> + ECS Service Connect</td>
+<td>Container Apps internal DNS / AKS + CoreDNS</td>
+</tr>
+<tr>
+<td>Private SaaS connectivity</td>
+<td>VPC <strong>PrivateLink</strong> (Snowflake)</td>
+<td>Azure <strong>Private Link</strong></td>
+</tr>
+<tr>
+<td>Edge security + CDN</td>
+<td><strong>CloudFront</strong> + <strong>AWS WAF</strong></td>
+<td><strong>Azure Front Door</strong> + WAF</td>
+</tr>
+<tr>
+<td>TLS certificates</td>
+<td><strong>ACM</strong></td>
+<td>Key Vault certificates / managed certs</td>
+</tr>
+<tr>
+<td>Static web hosting</td>
+<td><strong>S3</strong> static website</td>
+<td><strong>Blob Storage</strong> static website</td>
+</tr>
+<tr>
+<td>API gateway</td>
+<td><strong>API Gateway</strong> (REST)</td>
+<td><strong>Azure API Management</strong></td>
+</tr>
+<tr>
+<td>Custom authorizer</td>
+<td><strong>Lambda authorizer</strong></td>
+<td>APIM policy / <strong>Azure Functions</strong></td>
+</tr>
+<tr>
+<td>Customer identity (CIAM)</td>
+<td><strong>Cognito user pool</strong></td>
+<td><strong>Microsoft Entra External ID</strong></td>
+</tr>
+<tr>
+<td>Transactional email</td>
+<td><strong>SES</strong></td>
+<td><strong>Azure Communication Services Email</strong></td>
+</tr>
+<tr>
+<td>Container orchestration</td>
+<td><strong>ECS</strong> (Fargate) + Service Connect</td>
+<td><strong>Azure Container Apps</strong> (or AKS)</td>
+</tr>
+<tr>
+<td>Container registry</td>
+<td><strong>ECR</strong></td>
+<td><strong>Azure Container Registry (ACR)</strong></td>
+</tr>
+<tr>
+<td>Key-value / NoSQL</td>
+<td><strong>DynamoDB</strong></td>
+<td><strong>Cosmos DB</strong> (Table API)</td>
+</tr>
+<tr>
+<td>Relational DB</td>
+<td><strong>Aurora/RDS PostgreSQL</strong></td>
+<td><strong>Azure Database for PostgreSQL Flexible Server</strong></td>
+</tr>
+<tr>
+<td>Document DB (self-managed)</td>
+<td><strong>MongoDB on EC2 + ASG</strong></td>
+<td><strong>Cosmos DB for MongoDB</strong> (or VMSS/AKS)</td>
+</tr>
+<tr>
+<td>Secrets</td>
+<td><strong>Secrets Manager</strong></td>
+<td><strong>Azure Key Vault</strong></td>
+</tr>
+<tr>
+<td>App config / parameters</td>
+<td><strong>SSM Parameter Store</strong></td>
+<td><strong>Key Vault</strong> + <strong>App Configuration</strong></td>
+</tr>
+<tr>
+<td>Encryption keys</td>
+<td><strong>AWS KMS</strong></td>
+<td><strong>Key Vault</strong> keys / Managed HSM</td>
+</tr>
+<tr>
+<td>Workflow orchestration</td>
+<td><strong>Step Functions</strong></td>
+<td><strong>Logic Apps</strong> / <strong>Durable Functions</strong></td>
+</tr>
+<tr>
+<td>Functions (FaaS)</td>
+<td><strong>Lambda</strong></td>
+<td><strong>Azure Functions</strong></td>
+</tr>
+<tr>
+<td>VM autoscaling</td>
+<td><strong>EC2 + Auto Scaling Group</strong></td>
+<td><strong>VM Scale Sets</strong></td>
+</tr>
+<tr>
+<td>Block storage</td>
+<td><strong>EBS</strong></td>
+<td><strong>Azure Managed Disks</strong></td>
+</tr>
+<tr>
+<td>Object storage (registries)</td>
+<td><strong>S3</strong> (infra + package registry)</td>
+<td><strong>Azure Blob Storage</strong></td>
+</tr>
+<tr>
+<td>IaC identity</td>
+<td>Azure App Registration / SP (already Azure)</td>
+<td>(same) Entra App Registration</td>
+</tr>
+<tr>
+<td>Observability</td>
+<td>CloudWatch (implied)</td>
+<td><strong>Azure Monitor</strong> + Log Analytics</td>
+</tr>
+<tr>
+<td>Data warehouse</td>
+<td><strong>Snowflake</strong> (SaaS)</td>
+<td>Snowflake (unchanged) or Fabric/Synapse</td>
+</tr>
+<tr>
+<td>ELT replication</td>
+<td><strong>Fivetran</strong> (SaaS)</td>
+<td>Fivetran (unchanged) or Azure Data Factory</td>
+</tr>
+<tr>
+<td>BI</td>
+<td><strong>Power BI</strong> (already Azure)</td>
+<td>Power BI (unchanged)</td>
 </tr>
 </tbody>
 </table>
-<h2 id="when-to-reach-for-nats">When to reach for NATS<a class="headerlink" href="#when-to-reach-for-nats" title="Permanent link">&para;</a></h2>
-<ul>
-<li>You want a <strong>simple, low-latency</strong> backbone for microservices (request-reply, events) without operating Kafka/RabbitMQ.</li>
-<li>You need both <strong>ephemeral messaging</strong> (core) and <strong>durable streaming</strong> (JetStream) from one system.</li>
-<li>Reach for <strong>Kafka</strong> instead when you need very high-throughput, long-retention log analytics with a large partitioned-log ecosystem; <strong>RabbitMQ</strong> for complex broker-side routing/AMQP semantics.</li>
-</ul>
+<p><strong>Note on SaaS components:</strong> Snowflake, Fivetran, GitHub, and Power BI are external SaaS and stay the same on either cloud — only how you <em>connect privately</em> to them changes (PrivateLink → Private Link). Power BI is already an Azure/Microsoft product, which is why this platform is multi-cloud even on "AWS".</p>
 <h2 id="related">Related<a class="headerlink" href="#related" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="core-nats/">Core NATS</a> — subjects, pub/sub, request-reply, queue groups</li>
-<li><a href="jetstream/">JetStream</a> — streams, consumers, acks, retention, dedup</li>
-<li><a href="stream-config/">Stream configuration</a> · <a href="consumer-config/">Consumer configuration</a> — the full option sets</li>
-<li><a href="kv-store/">KV store</a> · <a href="object-store/">Object store</a> — higher-level stores on JetStream</li>
+<li><a href="aws-architecture/">AWS architecture — component by component</a></li>
+<li><a href="azure-architecture/">Azure re-architecture</a></li>
+<li><a href="tenant-onboarding/">Tenant onboarding workflow</a></li>
+<li><a href="../multi-tenancy/">Multi-tenant application best practices (deep dive)</a></li>
 </ul>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://docs.nats.io/nats-concepts/overview">NATS Concepts — Overview</a></li>
-<li><a href="https://docs.nats.io/nats-concepts/what-is-nats">What is NATS</a></li>
-<li><a href="https://docs.nats.io/reference/faq">FAQ — delivery guarantees</a></li>
+<li><a href="https://docs.aws.amazon.com/wellarchitected/latest/saas-lens/saas-lens.html">AWS Architecture Center — SaaS lens</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/architecture/guide/multitenant/overview">Azure Architecture Center — Multitenant SaaS</a></li>
+<li><a href="https://docs.snowflake.com/en/user-guide/organizations">Snowflake — Organizations and accounts</a></li>
+<li><a href="https://docs.dagster.io/deployment/oss/deployment-options/aws">Dagster — Deploying on ECS</a></li>
 </ul>
 
 
@@ -1587,7 +1714,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../.." class="md-footer__link md-footer__link--prev" aria-label="Previous: Interview Prep">
+          <a href="../multi-tenancy/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Multi-Tenant Application Design — Deep Dive">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1597,20 +1724,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Interview Prep
+                Multi-Tenant Application Design — Deep Dive
               </div>
             </div>
           </a>
         
         
           
-          <a href="consumer-config/" class="md-footer__link md-footer__link--next" aria-label="Next: JetStream Consumer Configuration">
+          <a href="aws-architecture/" class="md-footer__link md-footer__link--next" aria-label="Next: AWS Architecture — Component by Component">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                JetStream Consumer Configuration
+                AWS Architecture — Component by Component
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1642,10 +1769,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.indexes", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.indexes", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

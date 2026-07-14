@@ -1,0 +1,2265 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Personal interview-prep knowledge base">
+      
+      
+      
+        <link rel="canonical" href="https://diptabose.github.io/interview-prep/system-design/multi-tenancy/">
+      
+      
+        <link rel="prev" href="../../frontend/react/hooks/use-transition/">
+      
+      
+        <link rel="next" href="../data-platform-architecture/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Multi-Tenant Application Design — Deep Dive - Interview Prep</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Interview Prep">
+  <link rel="apple-touch-icon" href="../../assets/icon-192.png">
+  <script>
+    // Offline support was removed. Clean up any previously-registered service
+    // worker and its cache so returning visitors aren't left with a stale one.
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function (regs) {
+        regs.forEach(function (r) { r.unregister(); });
+      }).catch(function () {});
+    }
+    if (window.caches && caches.keys) {
+      caches.keys().then(function (keys) {
+        keys.forEach(function (k) { caches.delete(k); });
+      }).catch(function () {});
+    }
+  </script>
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#multi-tenant-application-design-deep-dive" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Interview Prep" class="md-header__button md-logo" aria-label="Interview Prep" data-md-component="logo">
+      
+  <img src="../../assets/favicon.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Interview Prep
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Multi-Tenant Application Design — Deep Dive
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Diptabose/interview-prep" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Diptabose/interview-prep
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Interview Prep" class="md-nav__button md-logo" aria-label="Interview Prep" data-md-component="logo">
+      
+  <img src="../../assets/favicon.svg" alt="logo">
+
+    </a>
+    Interview Prep
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Diptabose/interview-prep" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Diptabose/interview-prep
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interview Prep
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backend
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Backend
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Messaging
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Messaging
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../backend/messaging/nats/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nats
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Nats
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/messaging/nats/consumer-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JetStream Consumer Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/messaging/nats/core-nats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core NATS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/messaging/nats/jetstream/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NATS JetStream
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/messaging/nats/kv-store/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JetStream KV Store
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/messaging/nats/object-store/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JetStream Object Store
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/messaging/nats/stream-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JetStream Stream Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Frontend
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    React
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    React
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../frontend/react/hooks/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hooks
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hooks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/react/hooks/use-action-state/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    useActionState
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/react/hooks/use-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    use
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/react/hooks/use-deferred-value/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    useDeferredValue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/react/hooks/use-effect-event/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    useEffectEvent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/react/hooks/use-form-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    useFormStatus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/react/hooks/use-optimistic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    useOptimistic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/react/hooks/use-transition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    useTransition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    System design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-Tenant Application Design — Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-Tenant Application Design — Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-multi-tenancy-is-hard-and-worth-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why multi-tenancy is hard (and worth it)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-tenancy-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The tenancy models
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The tenancy models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deployment-stamps-the-siloscale-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment stamps (the silo/scale unit)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-four-isolation-dimensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The four isolation dimensions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The four isolation dimensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-data-isolation-the-models-that-matter-most" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Data isolation — the models that matter most
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-identity-access-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Identity &amp; access isolation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-compute-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Compute isolation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-network-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Network isolation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-noisy-neighbor-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The noisy neighbor problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operational-concerns-what-separates-a-demo-from-a-product" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operational concerns (what separates a demo from a product)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operational concerns (what separates a demo from a product)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onboarding-offboarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Onboarding &amp; offboarding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metering-billing-tiering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metering, billing &amp; tiering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-tenant-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-tenant observability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schema-deployment-changes-across-tenants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schema &amp; deployment changes across tenants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security &amp; compliance
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trade-off-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trade-off summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-axis-iq-applies-all-this-bridge-model-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How AXIS IQ applies all this (bridge model in practice)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gotchas-interview-traps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gotchas &amp; interview traps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../data-platform-architecture/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data platform architecture
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data platform architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-platform-architecture/aws-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Architecture — Component by Component
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-platform-architecture/azure-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Azure Re-Architecture — The Same Platform on Azure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-platform-architecture/tenant-onboarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tenant Onboarding Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-multi-tenancy-is-hard-and-worth-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why multi-tenancy is hard (and worth it)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-tenancy-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The tenancy models
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The tenancy models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deployment-stamps-the-siloscale-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment stamps (the silo/scale unit)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-four-isolation-dimensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The four isolation dimensions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The four isolation dimensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-data-isolation-the-models-that-matter-most" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Data isolation — the models that matter most
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-identity-access-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Identity &amp; access isolation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-compute-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Compute isolation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-network-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Network isolation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-noisy-neighbor-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The noisy neighbor problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operational-concerns-what-separates-a-demo-from-a-product" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operational concerns (what separates a demo from a product)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operational concerns (what separates a demo from a product)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onboarding-offboarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Onboarding &amp; offboarding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metering-billing-tiering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metering, billing &amp; tiering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-tenant-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-tenant observability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schema-deployment-changes-across-tenants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schema &amp; deployment changes across tenants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security &amp; compliance
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trade-off-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trade-off summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-axis-iq-applies-all-this-bridge-model-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How AXIS IQ applies all this (bridge model in practice)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gotchas-interview-traps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gotchas &amp; interview traps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="multi-tenant-application-design-deep-dive">Multi-Tenant Application Design — Deep Dive<a class="headerlink" href="#multi-tenant-application-design-deep-dive" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>A <strong>multi-tenant</strong> application serves many customers ("tenants") from one logical system while keeping each tenant's data and experience isolated. This note is the deep dive on how to do it <em>well</em>: the tenancy models, how to isolate data/compute/network/identity, how to stop tenants stepping on each other, and the operational realities (onboarding, metering, scaling, compliance). Grounded in the AWS SaaS Lens and Azure's multitenancy guidance, with the <a href="../data-platform-architecture/">AXIS IQ platform</a> as a running example.</p>
+</blockquote>
+<h2 id="why-multi-tenancy-is-hard-and-worth-it">Why multi-tenancy is hard (and worth it)<a class="headerlink" href="#why-multi-tenancy-is-hard-and-worth-it" title="Permanent link">&para;</a></h2>
+<p>Running one shared system for all customers gives you <strong>economies of scale, one codebase to operate, and fast onboarding</strong>. The cost is that you must engineer, at every layer, the isolation that a single-tenant deployment gets for free. Get it wrong and you leak tenant A's data to tenant B (catastrophic) or let one tenant's load degrade everyone (the <em>noisy neighbor</em> problem). Multi-tenancy is fundamentally a series of <strong>isolation vs. efficiency trade-offs</strong> — and the interview signal is whether you can reason about them per layer, not just recite "use a tenant_id column."</p>
+<pre class="mermaid"><code>flowchart LR
+    subgraph pool["Pool (shared) — efficient"]
+        P[Shared compute + shared DB&lt;br/&gt;tenant_id everywhere]
+    end
+    subgraph silo["Silo (dedicated) — isolated"]
+        S[Per-tenant stack + per-tenant DB]
+    end
+    pool &lt;--&gt;|bridge / hybrid:&lt;br/&gt;mix per component or per tier| silo</code></pre>
+<h2 id="the-tenancy-models">The tenancy models<a class="headerlink" href="#the-tenancy-models" title="Permanent link">&para;</a></h2>
+<p>Both AWS and Azure converge on the same spectrum, with different names:</p>
+<table>
+<thead>
+<tr>
+<th>Spectrum</th>
+<th>AWS SaaS Lens</th>
+<th>Azure Architecture Center</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fully shared</td>
+<td><strong>Pool</strong></td>
+<td>Shared / fully multitenant deployment</td>
+</tr>
+<tr>
+<td>Mixed</td>
+<td><strong>Bridge</strong></td>
+<td>Horizontally partitioned / hybrid</td>
+</tr>
+<tr>
+<td>Fully dedicated</td>
+<td><strong>Silo</strong></td>
+<td>Single-tenant deployment (per-tenant <strong>deployment stamp</strong>)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Pool (shared):</strong> all tenants share compute and a database; data is separated logically by a <strong>tenant identifier</strong>. Cheapest, most scalable, easiest to operate — but isolation is <em>only as strong as your code and policies</em>, and it's the most exposed to noisy neighbors.</li>
+<li><strong>Silo (dedicated):</strong> each tenant gets its own stack/database (or even account/subscription). Strongest isolation, simplest data model, natural for compliance/data-residency and premium tiers — but expensive, slower to onboard, and harder to operate at scale (N stacks to patch).</li>
+<li><strong>Bridge / hybrid:</strong> the real world. Silo what <em>must</em> be isolated (e.g. storage, or a regulated tenant), pool the rest (e.g. the stateless app tier). Very common: <strong>pool the free/basic tier, silo premium tenants</strong>.</li>
+</ul>
+<p><strong>Golden rule (from the AWS guidance):</strong> <em>start with the simplest model that meets your requirements and build in the flexibility to add isolation where specific customers need it.</em> Don't silo everything "to be safe" — you'll drown in operational cost.</p>
+<h3 id="deployment-stamps-the-siloscale-unit">Deployment stamps (the silo/scale unit)<a class="headerlink" href="#deployment-stamps-the-siloscale-unit" title="Permanent link">&para;</a></h3>
+<p>A <strong>deployment stamp</strong> is a complete, independent copy of the stack (compute + data + config) serving a bounded set of tenants. Stamps are your unit of <strong>scale, fault isolation, and compliance boundary</strong>: deploy them with IaC (Terraform/Bicep), route tenants to a stamp, and add stamps as you grow. AXIS IQ's per-tenant Dagster stack + Snowflake account is effectively a per-tenant stamp.</p>
+<h2 id="the-four-isolation-dimensions">The four isolation dimensions<a class="headerlink" href="#the-four-isolation-dimensions" title="Permanent link">&para;</a></h2>
+<p>Isolation is not one decision — make it per layer:</p>
+<pre class="mermaid"><code>flowchart TB
+    subgraph T[Per tenant, enforced at every layer]
+      direction TB
+      N[Network isolation&lt;br/&gt;VPC/VNet, subnets, private endpoints]
+      C[Compute isolation&lt;br/&gt;shared pool vs dedicated tasks/clusters]
+      D[Data isolation&lt;br/&gt;DB / schema / row-level]
+      I[Identity isolation&lt;br/&gt;scoped tokens, per-tenant IAM/RBAC]
+    end
+    I --&gt; C --&gt; D
+    N -.wraps.- C</code></pre>
+<h3 id="1-data-isolation-the-models-that-matter-most">1. Data isolation — the models that matter most<a class="headerlink" href="#1-data-isolation-the-models-that-matter-most" title="Permanent link">&para;</a></h3>
+<p>This is where interviews spend the most time. Three concrete patterns, in increasing sharing:</p>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Isolation</th>
+<th>Cost / density</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Database per tenant</strong> (silo)</td>
+<td>Strongest</td>
+<td>Lowest density</td>
+<td>Simple queries, easy per-tenant backup/restore/encryption, easy data-residency. Connection/ops explosion at scale.</td>
+</tr>
+<tr>
+<td><strong>Schema per tenant</strong> (bridge)</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>One DB instance, separate schemas. Balances isolation and cost; migrations must fan out across schemas.</td>
+</tr>
+<tr>
+<td><strong>Shared table + <code>tenant_id</code></strong> (pool)</td>
+<td>Weakest (logical)</td>
+<td>Highest density</td>
+<td>Classic multi-tenancy. Every table carries <code>tenant_id</code>; every query <em>must</em> filter by it. Cheapest, but a single missing predicate = cross-tenant leak.</td>
+</tr>
+</tbody>
+</table>
+<p>For the <strong>pooled</strong> model, enforce isolation <em>below</em> the application with <strong>Row-Level Security (RLS)</strong> so the database itself refuses to return other tenants' rows even if a query forgets the filter:</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">-- Postgres row-level security for pooled multi-tenancy</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="n">ENABLE</span><span class="w"> </span><span class="k">ROW</span><span class="w"> </span><span class="k">LEVEL</span><span class="w"> </span><span class="k">SECURITY</span><span class="p">;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">CREATE</span><span class="w"> </span><span class="n">POLICY</span><span class="w"> </span><span class="n">tenant_isolation</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">orders</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="k">USING</span><span class="w"> </span><span class="p">(</span><span class="n">tenant_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current_setting</span><span class="p">(</span><span class="s1">&#39;app.current_tenant&#39;</span><span class="p">)::</span><span class="n">uuid</span><span class="p">);</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1">-- App sets the tenant context per connection/transaction:</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">SET</span><span class="w"> </span><span class="n">app</span><span class="p">.</span><span class="n">current_tenant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;4b9c...&#39;</span><span class="p">;</span><span class="w">   </span><span class="c1">-- from the validated token, never from user input</span>
+</span></code></pre></div>
+<p><strong>Defense in depth:</strong> don't rely on app code alone. Combine (a) a validated tenant context, (b) a data-access layer that always injects the tenant predicate, and (c) RLS/policy at the store. Any one of them failing shouldn't cause a leak.</p>
+<h3 id="2-identity-access-isolation">2. Identity &amp; access isolation<a class="headerlink" href="#2-identity-access-isolation" title="Permanent link">&para;</a></h3>
+<p>Tenant context must be a <strong>first-class, server-derived concept</strong> — put <code>tenantId</code> in the validated JWT claim (or session), <em>never</em> trust a client-supplied header/param. Then scope access:</p>
+<ul>
+<li><strong>Token-scoped:</strong> the auth layer resolves the tenant and stamps it into the request context (AXIS IQ's <strong>Lambda authorizer</strong> returns <code>{ tenantId }</code>; Azure's APIM <code>validate-jwt</code> maps the claim to a header).</li>
+<li><strong>Dynamically-scoped credentials (the strong pattern):</strong> derive short-lived, tenant-scoped credentials per request. On AWS, use <strong>IAM dynamic/ABAC policies</strong> with <code>${aws:PrincipalTag/tenantId}</code> or <code>sts:AssumeRole</code> + session policies so the <em>credentials themselves</em> can only touch that tenant's resources (e.g. S3 prefix, DynamoDB leading key, Secrets Manager path). On Azure, use <strong>managed identity + RBAC</strong> scoped to per-tenant resources.</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>// AWS: an S3 policy that isolates by tenant using ABAC — the caller&#39;s
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>// session is tagged with tenantId; they can only reach their own prefix.
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>{
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  &quot;Effect&quot;: &quot;Allow&quot;,
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  &quot;Action&quot;: &quot;s3:GetObject&quot;,
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  &quot;Resource&quot;: &quot;arn:aws:s3:::data-bucket/${aws:PrincipalTag/tenantId}/*&quot;
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>}
+</span></code></pre></div>
+<p>This is what makes AXIS IQ's <code>dp/dev/tenants/[tenantid]/*</code> secret naming an <em>actual</em> boundary: IAM/RBAC scoped to the path means tenant A's role physically cannot read tenant B's secrets.</p>
+<h3 id="3-compute-isolation">3. Compute isolation<a class="headerlink" href="#3-compute-isolation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Pooled compute:</strong> shared containers/functions handle all tenants; cheapest, but needs quotas + throttling to prevent noisy neighbors.</li>
+<li><strong>Siloed compute:</strong> dedicated tasks/clusters (or stamps) per tenant; used for premium/regulated tenants. AXIS IQ silos the Dagster/transform compute per tenant while pooling the shared API edge.</li>
+</ul>
+<h3 id="4-network-isolation">4. Network isolation<a class="headerlink" href="#4-network-isolation" title="Permanent link">&para;</a></h3>
+<p>Shared ingress (WAF/CDN/API gateway) up front; private subnets/endpoints for data. Siloed tenants can get dedicated VPCs/VNets or subscriptions; pooled tenants share the network but are separated at the identity/data layers.</p>
+<h2 id="the-noisy-neighbor-problem">The noisy neighbor problem<a class="headerlink" href="#the-noisy-neighbor-problem" title="Permanent link">&para;</a></h2>
+<p>In any <em>pooled</em> resource, one tenant's spike can starve others. Mitigations (mix several):</p>
+<ul>
+<li><strong>Quotas &amp; rate limits</strong> per tenant at the API gateway (API Gateway usage plans / APIM products).</li>
+<li><strong>Throttle expensive operations</strong> — cap query time, page sizes, max returned rows, concurrent jobs.</li>
+<li><strong>Async + off-peak</strong> for heavy, non-time-sensitive work (queues, batch windows).</li>
+<li><strong>Rebalance / bin-pack tenants</strong> across stamps so complementary usage patterns flatten peaks; move a chronic offender to its own silo.</li>
+<li><strong>Per-tenant usage tracking</strong> — attribute consumption (e.g. Cosmos DB <strong>request units</strong>, DB CPU, tokens) to each <code>tenantId</code> so you can <em>see</em> the noisy neighbor and act (throttle, upsell to a dedicated tier, or isolate).</li>
+</ul>
+<h2 id="operational-concerns-what-separates-a-demo-from-a-product">Operational concerns (what separates a demo from a product)<a class="headerlink" href="#operational-concerns-what-separates-a-demo-from-a-product" title="Permanent link">&para;</a></h2>
+<h3 id="onboarding-offboarding">Onboarding &amp; offboarding<a class="headerlink" href="#onboarding-offboarding" title="Permanent link">&para;</a></h3>
+<p>Automate the full lifecycle: provision tenant resources, seed identity, write secrets, register routing — as an <strong>idempotent, retryable workflow</strong> (see the <a href="../data-platform-architecture/tenant-onboarding/">AXIS IQ tenant-onboarding saga</a>). Offboarding matters too: a clean, auditable teardown + data export/retention per contract.</p>
+<h3 id="metering-billing-tiering">Metering, billing &amp; tiering<a class="headerlink" href="#metering-billing-tiering" title="Permanent link">&para;</a></h3>
+<p>Emit <strong>per-tenant usage events</strong> (requests, storage, compute-seconds, tokens) tagged with <code>tenantId</code>; aggregate for billing and for enforcing tier limits. Tiering is where the tenancy models pay off: <em>basic = pooled</em>, <em>premium = siloed/dedicated stamp with a dedicated encryption key and data-residency guarantee</em>.</p>
+<h3 id="per-tenant-observability">Per-tenant observability<a class="headerlink" href="#per-tenant-observability" title="Permanent link">&para;</a></h3>
+<p>Tag <strong>every</strong> log line, metric, and trace with <code>tenantId</code>. Without it you can't answer "is tenant X slow?", attribute cost, or debug a leak. This is the single highest-leverage operational habit in multi-tenancy.</p>
+<h3 id="schema-deployment-changes-across-tenants">Schema &amp; deployment changes across tenants<a class="headerlink" href="#schema-deployment-changes-across-tenants" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Pooled:</strong> one migration, but it hits everyone at once — must be backward-compatible and zero-downtime.</li>
+<li><strong>Silo/schema-per-tenant:</strong> migrations <strong>fan out</strong> across N databases/schemas — needs orchestration, versioning, and the ability to roll tenants forward independently (AXIS IQ's <em>versioned tenant deployment</em> enables exactly this).</li>
+<li>Limit schema divergence between tenants even in bridge mode, or migrations become unmanageable.</li>
+</ul>
+<h3 id="security-compliance">Security &amp; compliance<a class="headerlink" href="#security-compliance" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Per-tenant encryption keys (BYOK/CMK)</strong> for tenants needing cryptographic isolation or the ability to revoke access by destroying a key.</li>
+<li><strong>Data residency</strong> — silo regulated tenants into a region/stamp that satisfies their jurisdiction.</li>
+<li><strong>Test isolation deliberately</strong> — verify no cross-tenant leakage; use fault injection (e.g. Azure Chaos Studio) to confirm noisy-neighbor behavior is acceptable.</li>
+</ul>
+<h2 id="trade-off-summary">Trade-off summary<a class="headerlink" href="#trade-off-summary" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Pool (shared)</th>
+<th>Silo (dedicated)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cost / density</td>
+<td>✅ Best</td>
+<td>❌ Worst</td>
+</tr>
+<tr>
+<td>Isolation strength</td>
+<td>❌ Logical only</td>
+<td>✅ Physical</td>
+</tr>
+<tr>
+<td>Onboarding speed</td>
+<td>✅ Instant</td>
+<td>❌ Slower (provision a stack)</td>
+</tr>
+<tr>
+<td>Blast radius</td>
+<td>❌ Wide</td>
+<td>✅ Contained</td>
+</tr>
+<tr>
+<td>Noisy-neighbor risk</td>
+<td>❌ High</td>
+<td>✅ None</td>
+</tr>
+<tr>
+<td>Ops at scale (patching, migration)</td>
+<td>✅ One system</td>
+<td>❌ N systems</td>
+</tr>
+<tr>
+<td>Compliance / data residency</td>
+<td>❌ Harder</td>
+<td>✅ Natural</td>
+</tr>
+<tr>
+<td>Per-tenant customization</td>
+<td>❌ Limited</td>
+<td>✅ Flexible</td>
+</tr>
+</tbody>
+</table>
+<h2 id="how-axis-iq-applies-all-this-bridge-model-in-practice">How AXIS IQ applies all this (bridge model in practice)<a class="headerlink" href="#how-axis-iq-applies-all-this-bridge-model-in-practice" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>AXIS IQ choice</th>
+<th>Model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Edge (DNS/WAF/CDN/API GW/Cognito)</td>
+<td>Shared, tenant resolved by authorizer</td>
+<td><strong>Pool</strong></td>
+</tr>
+<tr>
+<td>Transform compute (Dagster)</td>
+<td>Dedicated per-tenant stack/stamp</td>
+<td><strong>Silo</strong></td>
+</tr>
+<tr>
+<td>Data warehouse (Snowflake)</td>
+<td>Dedicated <strong>account</strong> per tenant</td>
+<td><strong>Silo</strong></td>
+</tr>
+<tr>
+<td>Secrets</td>
+<td>Namespaced <code>dp/dev/tenants/[id]/*</code> + scoped IAM</td>
+<td>Pooled store, <strong>siloed access</strong></td>
+</tr>
+<tr>
+<td>Onboarding</td>
+<td>Automated Step Functions saga</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>It's a textbook <strong>bridge</strong>: pool the stateless edge for efficiency, silo the data and transform layers for isolation and compliance. That's the pattern to reach for in most SaaS design interviews.</p>
+<h2 id="gotchas-interview-traps">Gotchas &amp; interview traps<a class="headerlink" href="#gotchas-interview-traps" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>"Just add a <code>tenant_id</code> column" is not isolation</strong> — without RLS/policy enforcement and server-derived tenant context, one missing <code>WHERE tenant_id = ?</code> leaks data. Always describe <strong>defense in depth</strong>.</li>
+<li><strong>Never trust client-supplied tenant identifiers</strong> — derive <code>tenantId</code> from the validated token server-side.</li>
+<li><strong>Isolation ≠ one setting</strong> — decide it per layer (network/compute/data/identity); they can differ.</li>
+<li><strong>Silo-everything is a trap</strong> — it doesn't scale operationally; justify each silo.</li>
+<li><strong>Noisy neighbor is inevitable in pools</strong> — always pair pooling with quotas + per-tenant metering.</li>
+<li><strong>Migrations are the hidden tax of silo/schema-per-tenant</strong> — have a fan-out story.</li>
+<li><strong>Dynamically-scoped credentials (ABAC / assume-role)</strong> are the strong answer to "how do you <em>guarantee</em> a request can't touch another tenant's data" — stronger than app-layer checks alone.</li>
+</ul>
+<h2 id="related">Related<a class="headerlink" href="#related" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../data-platform-architecture/">AXIS IQ — architecture overview &amp; tenancy model</a></li>
+<li><a href="../data-platform-architecture/tenant-onboarding/">AXIS IQ — tenant onboarding workflow</a></li>
+<li><a href="../data-platform-architecture/aws-architecture/">AWS architecture (secrets, IAM, Cognito)</a></li>
+<li><a href="../data-platform-architecture/azure-architecture/">Azure re-architecture (Key Vault RBAC, managed identity)</a></li>
+</ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/wellarchitected/latest/saas-lens/silo-pool-and-bridge-models.html">AWS Well-Architected SaaS Lens — Silo, Pool, and Bridge models</a></li>
+<li><a href="https://docs.aws.amazon.com/whitepapers/latest/saas-tenant-isolation-strategies/saas-tenant-isolation-strategies.html">AWS — SaaS Tenant Isolation Strategies (whitepaper)</a></li>
+<li><a href="https://docs.aws.amazon.com/whitepapers/latest/multi-tenant-saas-storage-strategies/saas-partitioning-models.html">AWS — SaaS Storage / partitioning models</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/architecture/guide/multitenant/considerations/tenancy-models">Azure Architecture Center — Tenancy models for a multitenant solution</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/architecture/guide/multitenant/approaches/storage-data">Azure — Architectural approaches for storage and data in multitenancy</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/deployment-stamp">Azure — Deployment Stamps pattern</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/architecture/antipatterns/noisy-neighbor/noisy-neighbor">Azure — Noisy Neighbor antipattern</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/architecture/guide/multitenant/checklist">Azure — Multitenancy checklist</a></li>
+<li><a href="https://www.postgresql.org/docs/current/ddl-rowsecurity.html">PostgreSQL — Row Security Policies (RLS)</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../frontend/react/hooks/use-transition/" class="md-footer__link md-footer__link--prev" aria-label="Previous: useTransition">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                useTransition
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../data-platform-architecture/" class="md-footer__link md-footer__link--next" aria-label="Next: AXIS IQ Data Platform — Architecture Overview">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                AXIS IQ Data Platform — Architecture Overview
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.indexes", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
